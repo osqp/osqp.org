@@ -1,0 +1,13 @@
+_site
+.sass-cache
+.jekyll-metadata
+
+
+# OSX Stuff
+.DS_Store
+
+
+
+# Editor stuff
+*#
+*~
