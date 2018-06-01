@@ -6,6 +6,9 @@ _site
 # OSX Stuff
 .DS_Store
 
+# Remove bundle
+.bundle
+vendor/
 
 
 # Editor stuff
