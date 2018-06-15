@@ -13,7 +13,7 @@
 - title: Free
   icon: fas fa-heart
   description: >
-    OSQP is free and will always be free for everyone.
+    OSQP is free and will always be free for everyone. Its license is Apache 2.0.
 
 - title: Embeddable
   icon: fas fa-microchip

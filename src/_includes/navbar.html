@@ -10,10 +10,10 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="/docs/">Docs</a></li>
 				{% assign pages_list = site.pages | sort:"order" %}
 				{% assign group = 'navigation' %}
 				{% include pages_list %}
-				<li class="nav-item"><a class="nav-link" href="/docs/">Docs</a></li>
 			</ul>
 			<ul class="navbar-nav">
 				<li><a class="nav-item" href="http://www.ox.ac.uk" title="University of Oxford"><img src="{{site.baseurl}}/assets/images/oxford_rectangle.png" class="img-fluid" alt="University of Oxford" /></a></li>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Julia &mdash; OSQP 0.3.1 documentation</title>
+  <title>CUTEst &mdash; OSQP 0.3.1 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Matlab" href="matlab.html" />
-    <link rel="prev" title="Python" href="python.html" />
+    <link rel="next" title="Linear System Solvers" href="linear_system_solvers.html" />
+    <link rel="prev" title="R" href="r.html" />
 <meta name="twitter:card" content="summary_large_image" >
 <meta name="twitter:creator" content="@bstellato" >
 <meta name="twitter:image"
@@ -109,14 +109,14 @@ content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
               <p class="caption"><span class="caption-text">User Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../solver/index.html">The solver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Get Started</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sources.html">Build from sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CC++.html">CC++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Julia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia.html">Julia</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matlab.html">Matlab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="r.html">R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cutest.html">CUTEst</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CUTEst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_system_solvers.html">Linear System Solvers</a></li>
 </ul>
 </li>
@@ -171,15 +171,15 @@ content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Installation</a> &raquo;</li>
+          <li><a href="index.html">Get Started</a> &raquo;</li>
         
-      <li>Julia</li>
+      <li>CUTEst</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/installation/julia.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/get_started/cutest.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,13 +192,15 @@ content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="julia">
-<h1>Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h1>
-<p>Julia interface can be directly installed from Julia package manager by running</p>
-<div class="code julia highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;OSQP&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The interface code is available on <a class="reference external" href="https://github.com/oxfordcontrol/OSQP.jl">GitHub</a>.</p>
+  <div class="section" id="cutest">
+<h1>CUTEst<a class="headerlink" href="#cutest" title="Permalink to this headline">¶</a></h1>
+<p>To be able to use OSQP and <a class="reference external" href="https://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki/">CUTEst</a> you need to</p>
+<ul class="simple">
+<li>Install <a class="reference external" href="https://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki/">CUTEst</a></li>
+<li>Compile <a class="reference internal" href="sources.html#build-from-sources"><span class="std std-ref">OSQP from sources</span></a></li>
+<li>Set the environment variable <code class="code docutils literal notranslate"><span class="pre">OSQP</span></code> to the main OSQP directory containing source code for which the compiled binary libraries lie in <code class="code docutils literal notranslate"><span class="pre">$OSQP/build/out</span></code>.</li>
+</ul>
+<p>For more details, see the <a class="reference external" href="https://ccpforge.cse.rl.ac.uk/svn/cutest/cutest/trunk/src/osqp/README.osqp">README.osqp</a> file in the CUTEst repository.</p>
 </div>
 
 
@@ -209,10 +211,10 @@ content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="matlab.html" class="btn btn-neutral float-right" title="Matlab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linear_system_solvers.html" class="btn btn-neutral float-right" title="Linear System Solvers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python.html" class="btn btn-neutral" title="Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="r.html" class="btn btn-neutral" title="R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -221,7 +223,7 @@ content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Bartolomeo Stellato, Goran Banjac.
+        &copy; Copyright 2018, Bartolomeo Stellato, Goran Banjac.
 
     </p>
   </div>
