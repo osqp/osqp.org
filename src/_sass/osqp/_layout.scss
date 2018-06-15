@@ -1,0 +1,79 @@
+// Intro jumbotron
+.head-intro {
+ background: url(../images/mit.jpg) center;
+ background-size: cover;
+ height: 500px;
+ color: white;
+  // -webkit-background-size: 100% 100%;           [> Safari 3.0 <]
+  //    -moz-background-size: 100% 100%;           [> Gecko 1.9.2 (Firefox 3.6) <]
+  //      -o-background-size: 100% 100%;           [> Opera 9.5 <]
+  //         background-size: 100% 100%;           [> Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers <]
+
+}
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+// html {
+//   position: relative;
+//   min-height: 100%;
+// }
+// body {
+//   [> Margin bottom by footer height <]
+//   margin-bottom: 200px;
+// }
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+// .footer {
+// }
+
+
+.footer {
+  flex-shrink: 0;
+  // position: absolute;
+  // bottom: 0;
+  // width: 100%;
+  // [> Set the fixed height of the footer here <]
+  // height: 120px;
+  // line-height: 120px;  // [> Vertically center the text there <]
+  // // background-color: #f5f5f5;
+  font-size: .9rem;
+
+  a {
+    color: $secondary;
+}
+}
+
+
+
+.navbar-brand .img-fluid {
+    height: 3rem;
+}
+
+
+
+
+// Footer copyright
+.copyright{
+    font-size: .7rem;
+    text-align: right;
+    a, a:visited {
+	color: $secondary;
+	text-decoration: none;
+    }
+    a:hover{
+	color: $dark;
+	text-decoration: none;
+    }
+}
+
