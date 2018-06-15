@@ -24,6 +24,7 @@ url: "https://osqp.org" # the base hostname & protocol for your site, e.g. http:
 # twitter_username: jekyllrb
 # github_username:  jekyll
 # facebook_link: https://www.facebook.com/groups/331532750262318/
+github_link: https://github.com/oxfordcontrol/osqp
 
 # Which folders to include?
 source: src
@@ -46,7 +47,7 @@ delete-delay: 2000
 quotes:
   - text: "A QP solver for everyone."
   - text: "Efficient, scalable and embeddable."
-  - text: "Open-source, widely interfaced."
+  - text: "Open-source, with many interfaces."
   - text: "Did I say it runs on your toaster too?"
 
 

@@ -1,9 +1,10 @@
 // Intro jumbotron
 .head-intro {
- background: url(../images/mit.jpg) center;
+ background: url(../images/home_header.jpg) center;
  background-size: cover;
  height: 500px;
  color: white;
+ text-shadow: 0px 2px 3px #555;
   // -webkit-background-size: 100% 100%;           [> Safari 3.0 <]
   //    -moz-background-size: 100% 100%;           [> Gecko 1.9.2 (Firefox 3.6) <]
   //      -o-background-size: 100% 100%;           [> Opera 9.5 <]
@@ -54,14 +55,12 @@ body {
 }
 }
 
-
-
 .navbar-brand .img-fluid {
-    height: 3rem;
+    height: 2rem;
 }
 
 .nav-item .img-fluid {
-    height: 3rem;
+    height: 2rem;
 }
 
 
