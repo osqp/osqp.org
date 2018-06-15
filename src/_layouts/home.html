@@ -12,3 +12,25 @@ layout: default
       </div>
     </div>
 
+
+
+
+    <div class="features py-3 bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h2 class="mb-4">Features</h2>
+			</div>
+		</div>
+		<div class="row">
+			{% for feature in site.data.features %}
+			<div class="col-lg-4 col-md-6">
+				<i class="{{feature.icon}} fa-2x my-3"></i>
+				<h5 class="mb-1">{{feature.title}}</h5>
+				<p class="my-2">{{feature.description}}</p>
+			</div><!-- /.col-lg-4 -->
+			{% endfor %}
+		</div>
+	</div>
+    </div>
+

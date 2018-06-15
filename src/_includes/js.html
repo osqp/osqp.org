@@ -1,0 +1,55 @@
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+    <!-- Typed.js -->
+    <script type="text/javascript" src="https://rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+
+
+<!-- <script> -->
+<!--     var options = { -->
+<!--       strings: ["First sentence", "Second sentence"], -->
+<!--       typeSpeed: 40, -->
+<!--     } -->
+<!--     var typed = new Typed("#typed", options); -->
+<!-- </script> -->
+
+<!-- Dynamic typing -->
+  <script type="text/javascript">
+  var myQuotes =  new Array();
+  {% for line in site.quotes %}
+    myQuotes.push("{{ line.text }}");
+  {% endfor %}
+
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex ;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+
+  {% if site.shuffle %}
+    shuffle(myQuotes)
+  {% endif %}
+
+  var typed = new Typed("#typed", {
+      strings: myQuotes,
+      typeSpeed: {{ site.type-speed }},
+      backSpeed: {{ site.back-speed }},
+      backDelay: {{ site.delete-delay }},
+      startDelay: {{ site.start-delay }},
+      loop: {{ site.loop }},
+      loopCount: {{ site.loop-count }},
+      cursorChar: "|"
+    });
+  </script>
