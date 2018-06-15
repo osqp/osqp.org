@@ -31,6 +31,10 @@ destination: _site
 
 include:
     - _pages
+    - _static
+
+# exclude:
+#     - docs/
 
 markdown: kramdown
 theme: minima

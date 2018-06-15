@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Contributing &mdash; OSQP 0.3.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Citing OSQP" href="../citing/index.html" />
+    <link rel="prev" title="Support vector machine (SVM)" href="../examples/svm.html" />
+<meta name="twitter:card" content="summary_large_image" >
+<meta name="twitter:creator" content="@bstellato" >
+<meta name="twitter:image"
+      content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
+<meta name="twitter:description" content="The OSQP (Operator Splitting
+Quadratic Program) solver is a numerical optimization package for solving
+convex quadratic programs." >
+<meta property="og:url" content="http://osqp.readthedocs.io" >
+<meta property="og:title" content="OSQP solver documentation" >
+<meta property="og:description" content="The OSQP (Operator Splitting Quadratic
+Program) solver is a numerical optimization package for solving convex
+quadratic programs." >
+<meta property="og:image"
+content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
+<meta property="fb:app_id" content="129555174389689">
+<meta property="og:type" content="website" >
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../solver/index.html">The solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/index.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parsers/index.html">Parsers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codegen/index.html">Code generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interfacing-new-linear-system-solvers">Interfacing new linear system solvers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-library-loading">Dynamic library loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-system-solution">Linear system solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../citing/index.html">Citing OSQP</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OSQP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Contributing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/contributing/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<p>OSQP is an open-source project open to any academic or commercial applications.
+Contributions are welcome as <a class="reference external" href="https://help.github.com/articles/creating-a-pull-request/">GitHub pull requests</a> in any part of the project such as</p>
+<ul class="simple">
+<li>algorithm developments</li>
+<li>interfaces to other languages</li>
+<li>compatibility with new architectures</li>
+<li>linear system solvers interfaces</li>
+</ul>
+<div class="section" id="interfacing-new-linear-system-solvers">
+<span id="id1"></span><h2>Interfacing new linear system solvers<a class="headerlink" href="#interfacing-new-linear-system-solvers" title="Permalink to this headline">¶</a></h2>
+<p>OSQP is designed to be easily interfaced to new linear system solvers via dynamic library loading.
+To add a linear system solver interface you need to edit the <code class="code docutils literal notranslate"><span class="pre">lin_sys/</span></code> directory subfolder <code class="code docutils literal notranslate"><span class="pre">direct/</span></code> or <code class="code docutils literal notranslate"><span class="pre">indirect/</span></code> depending on the type of solver.
+Create a subdirectory with your solver name with four files:</p>
+<ul class="simple">
+<li>Dynamic library loading: <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.c</span></code> and <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.h</span></code>.</li>
+<li>Linear system solution: <code class="code docutils literal notranslate"><span class="pre">mysolver.c</span></code> and <code class="code docutils literal notranslate"><span class="pre">mysolver.h</span></code>.</li>
+</ul>
+<p>We suggest you to have a look at the <a class="reference external" href="https://github.com/oxfordcontrol/osqp/tree/master/lin_sys/direct/pardiso">MKL Pardiso solver interface</a> for more details.</p>
+<div class="section" id="dynamic-library-loading">
+<h3>Dynamic library loading<a class="headerlink" href="#dynamic-library-loading" title="Permalink to this headline">¶</a></h3>
+<p>In this part define the methods to load the shared library and obtain the functions required to solve the linear system.
+The main functions to be exported are <code class="code docutils literal notranslate"><span class="pre">lh_load_mysolver(const</span> <span class="pre">char*</span> <span class="pre">libname)</span></code> and <code class="code docutils literal notranslate"><span class="pre">lh_unload_mysolver()</span></code>.
+In addition, the file <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.c</span></code> must define static function pointers to the shared library functions to be loaded.</p>
+</div>
+<div class="section" id="linear-system-solution">
+<h3>Linear system solution<a class="headerlink" href="#linear-system-solution" title="Permalink to this headline">¶</a></h3>
+<p>In this part we define the core of the interface: <strong>linear system solver object</strong>.
+The main functions are the external method</p>
+<ul class="simple">
+<li><code class="code docutils literal notranslate"><span class="pre">init_linsys_solver_mysolver</span></code>: create the instance and perform the setup</li>
+</ul>
+<p>and the internal methods of the object</p>
+<ul class="simple">
+<li><code class="code docutils literal notranslate"><span class="pre">free_linsys_solver_mysolver</span></code>: free the instance</li>
+<li><code class="code docutils literal notranslate"><span class="pre">solve_linsys_mysolver</span></code>: solve the linear system</li>
+<li><code class="code docutils literal notranslate"><span class="pre">update_matrices</span></code>: update problem matrices</li>
+<li><code class="code docutils literal notranslate"><span class="pre">update_rho_vec</span></code>: update <span class="math notranslate nohighlight">\(\rho\)</span> as a diagonal vector.</li>
+</ul>
+<p>After the initializations these functions are assigned to the internal pointers so that, for an instance <code class="code docutils literal notranslate"><span class="pre">s</span></code> they can be called as <code class="code docutils literal notranslate"><span class="pre">s-&gt;free</span></code>, <code class="code docutils literal notranslate"><span class="pre">s-&gt;solve</span></code>, <code class="code docutils literal notranslate"><span class="pre">s-&gt;update_matrices</span></code> and <code class="code docutils literal notranslate"><span class="pre">s-&gt;update_rho_vec</span></code>.</p>
+<p>The linear system solver object is defined in <code class="code docutils literal notranslate"><span class="pre">mysolver.h</span></code> as follows</p>
+<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span>typedef struct mysolver mysolver_solver;
+
+struct mysolver {
+    // Methods
+    enum linsys_solver_type type; // Linear system solver defined in constants.h
+
+    c_int (*solve)(struct mysolver * self, c_float * b, const OSQPSettings * settings);
+    void (*free)(struct mysolver * self);
+    c_int (*update_matrices)(struct mysolver * self, const csc *P, const csc *A, const OSQPSettings *settings);
+    c_int (*update_rho_vec)(struct mysolver * self, const c_float * rho_vec, const c_int m);
+
+    // Attributes
+    c_int nthreads; // Number of threads used (required!)
+
+    // Internal attributes of the solver
+    ...
+
+    // Internal attributes required for matrix updates
+    c_int * Pdiag_idx, Pdiag_n;  ///&lt; index and number of diagonal elements in P
+    c_int * PtoKKT, * AtoKKT;    ///&lt; Index of elements from P and A to KKT matrix
+    c_int * rhotoKKT;            ///&lt; Index of rho places in KKT matrix
+    ...
+
+};
+
+// Initialize mysolver solver
+mysolver_solver *init_linsys_solver_mysolver(const csc * P, const csc * A, c_float sigma, c_float * rho_vec, c_int polish);
+
+// Solve linear system and store result in b
+c_int solve_linsys_mysolver(mysolver_solver * s, c_float * b, const OSQPSettings * settings);
+
+ // Update linear system solver matrices
+c_int update_linsys_solver_matrices_mysolver(mysolver_solver * s,
+                const csc *P, const csc *A, const OSQPSettings *settings);
+
+// Update rho parameter in linear system solver structure
+c_int update_linsys_solver_rho_vec_mysolver(mysolver_solver * s, const c_float * rho_vec, const c_int m);
+
+// Free linear system solver
+void free_linsys_solver_mysolver(mysolver_solver * s);
+</pre></div>
+</div>
+<p>The function details are coded in the <code class="code docutils literal notranslate"><span class="pre">mysolver.c</span></code> file.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../citing/index.html" class="btn btn-neutral float-right" title="Citing OSQP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../examples/svm.html" class="btn btn-neutral" title="Support vector machine (SVM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Bartolomeo Stellato, Goran Banjac.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
