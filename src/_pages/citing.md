@@ -70,9 +70,3 @@ Code generation functionality and example in this [paper](http://stanford.edu/~b
 ```
 {% endraw %}
 
-
-
-```python
-def a(x, y):
-    return x + y
-```

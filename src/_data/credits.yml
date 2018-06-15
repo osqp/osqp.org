@@ -1,0 +1,29 @@
+- name: Bartolomeo Stellato
+  role: Main developer
+  affiliation: MIT
+  website: https://stellato.io
+
+- name: Goran Banjac
+  role: Main developer
+  affiliation: ETH Zurich
+  website: http://people.ee.ethz.ch/~gbanjac/
+
+- name: Paul Goulart
+  role: Methods and Maths
+  affiliation: University of Oxford
+  website: http://users.ox.ac.uk/~engs1373/
+
+- name: Stephen Boyd
+  role: Methods and Maths
+  affiliation: Stanford University
+  website: http://users.ox.ac.uk/~engs1373/
+
+- name: Alberto Bemporad
+  role: Methods and Maths
+  affiliation: IMT Lucca
+  website: http://cse.lab.imtlucca.it/~bemporad/
+
+- name: Nicholas Moehle
+  role: Methods, Maths and Code Generation
+  affiliation: Stanford University
+  website: http://www.nicholasmoehle.com/
