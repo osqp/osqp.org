@@ -28,6 +28,6 @@ end
 
 # Bootstrap
 gem 'jquery-rails'
-gem 'bootstrap' , '~> 4.1.0'
+gem 'bootstrap' , '= 4.1.1'
 
 
