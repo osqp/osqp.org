@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="/assets/css/osqp.css">
 
-    <title>{{ page.title | escape }}</title>
+    <title>{{ site.title }} {% if page.title %} - {{ page.title | escape }} {% endif %} </title>
 
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
