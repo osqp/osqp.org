@@ -62,8 +62,6 @@ body {
 }
 
 
-
-
 // Footer copyright
 .copyright{
     font-size: .7rem;
@@ -84,8 +82,10 @@ body {
 	padding-top: 5rem;
 	padding-top: 5rem;
 	text-align: center;
+	@include media-breakpoint-up(md) {
 	p {
-		font-size:.75rem;
+		font-size:.9rem;
+	}
 	}
 }
 
