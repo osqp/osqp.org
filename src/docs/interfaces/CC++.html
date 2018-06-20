@@ -26,8 +26,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -37,17 +36,17 @@
 <meta name="twitter:card" content="summary_large_image" >
 <meta name="twitter:creator" content="@bstellato" >
 <meta name="twitter:image"
-      content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
+      content="https://osqp.org/docs/_static/img/logo.png">
 <meta name="twitter:description" content="The OSQP (Operator Splitting
 Quadratic Program) solver is a numerical optimization package for solving
 convex quadratic programs." >
-<meta property="og:url" content="http://osqp.readthedocs.io" >
+<meta property="og:url" content="https://osqp.org" >
 <meta property="og:title" content="OSQP solver documentation" >
 <meta property="og:description" content="The OSQP (Operator Splitting Quadratic
 Program) solver is a numerical optimization package for solving convex
 quadratic programs." >
 <meta property="og:image"
-content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
+content="https://osqp.org/docs/_static/img/logo.png">
 <meta property="fb:app_id" content="129555174389689">
 <meta property="og:type" content="website" >
 
@@ -414,8 +413,8 @@ content="http://osqp.readthedocs.io/en/latest/_static/img/logo.png">
 <span id="_CPPv213osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="osqp_update_P__OSQPWorkspaceP.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1a5c5c604d45cfee252d8e664c08ae85a7"></span>c_int <code class="descname">osqp_update_P</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv313OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Px_new</em>, <em class="property">const</em> c_int *<em>Px_new_idx</em>, c_int <em>P_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix P (upper-diagonal) without changing sparsity structure.</p>
 <p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
-<p>
-Update elements of matrix P (upper-diagonal) without changing sparsity structure.<dl class="docutils">
+<p><p>Update elements of matrix P (upper-diagonal) without changing sparsity structure.</p>
+<dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>output flag: 0: OK 1: P_new_n &gt; nnzP &lt;0: error in the update</dd>
 <dt><strong>Parameters</strong></dt>
@@ -449,8 +448,8 @@ Update elements of matrix P (upper-diagonal) without changing sparsity structure
 <span id="_CPPv213osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="osqp_update_A__OSQPWorkspaceP.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1a9d6c5e4721ee980ecc83a05f307414de"></span>c_int <code class="descname">osqp_update_A</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv313OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Ax_new</em>, <em class="property">const</em> c_int *<em>Ax_new_idx</em>, c_int <em>A_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv313osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix A without changing sparsity structure.</p>
 <p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole P-&gt;x is replaced.</p>
-<p>
-Update elements of matrix A without changing sparsity structure.<dl class="docutils">
+<p><p>Update elements of matrix A without changing sparsity structure.</p>
+<dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>output flag: 0: OK 1: A_new_n &gt; nnzA &lt;0: error in the update</dd>
 <dt><strong>Parameters</strong></dt>
@@ -485,8 +484,8 @@ Update elements of matrix A without changing sparsity structure.<dl class="docut
 <dd><p>Update elements of matrix P (upper-diagonal) and elements of matrix A without changing sparsity structure.</p>
 <p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
 <p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole P-&gt;x is replaced.</p>
-<p>
-Update elements of matrix P (upper-diagonal) and elements of matrix A without changing sparsity structure.<dl class="docutils">
+<p><p>Update elements of matrix P (upper-diagonal) and elements of matrix A without changing sparsity structure.</p>
+<dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>output flag: 0: OK 1: P_new_n &gt; nnzP 2: A_new_n &gt; nnzA &lt;0: error in the update</dd>
 <dt><strong>Parameters</strong></dt>
@@ -1308,16 +1307,11 @@ Update elements of matrix P (upper-diagonal) and elements of matrix A without ch
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 
