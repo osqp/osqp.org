@@ -25,8 +25,11 @@
 - name: Los Alamos
   logo: los_alamos.png
 
+- name: University of Stuttgart
+  logo: stuttgart.png
+
 - name: IIT
   logo: iit.png
 
-- name: University of Stuttgart
-  logo: stuttgart.png
+- name: Lund University
+  logo: lund.jpg
