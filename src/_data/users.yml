@@ -1,0 +1,32 @@
+- name: MIT
+  logo: MIT.jpg
+
+- name: Stanford University
+  logo: stanford.png
+
+- name: Aptiv
+  logo: aptiv.png
+
+- name: UC Berkeley
+  logo: berkeley.jpg
+
+- name: Google
+  logo: google.jpg
+
+- name: Toyota
+  logo: toyota.jpg
+
+- name: KU Leuven
+  logo: kuleuven.png
+
+- name: UC Davis
+  logo: ucdavis.png
+
+- name: Los Alamos
+  logo: los_alamos.png
+
+- name: IIT
+  logo: iit.png
+
+- name: University of Stuttgart
+  logo: stuttgart.png

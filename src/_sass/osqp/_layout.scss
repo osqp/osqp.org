@@ -26,6 +26,7 @@ body {
 
 
 .footer {
+	margin-top: 5rem;
 	a {
 		color: $secondary;
 	}
@@ -83,4 +84,25 @@ text-align: left;
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.05rem;
+}
+
+/* Slider */
+// .slider_block {
+//         display: inline-block;
+//         height: 100%;
+//         vertical-align: middle;
+//         margin: auto;
+// }
+
+.slider img {
+	display:block;
+	margin: auto;
+	//   background: #3A6F9A;
+	// vertical-align: middle;
+	// max-height: 100px;
+	// max-width: 180px;// margin:auto;
+    -webkit-filter: grayscale(100%);
+    -moz-filter:    grayscale(100%);
+    -ms-filter:     grayscale(100%);
+    -o-filter:      grayscale(100%);
 }

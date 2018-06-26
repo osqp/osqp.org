@@ -53,5 +53,34 @@
   </script>
 
 
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<!-- Slider -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+
+<script type="text/javascript">
+	$('.slider').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		  responsive: [
+			  {
+				  breakpoint: 992,
+				  settings: {
+					  slidesToShow: 3,
+				  }
+			  },
+			  {
+				  breakpoint: 768,
+				  settings: {
+					  slidesToShow: 2,
+				  }
+			  }
+		  ]
+	});
+</script>
+
