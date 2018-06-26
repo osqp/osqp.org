@@ -16,6 +16,9 @@
 - name: Toyota
   logo: toyota.jpg
 
+- name: ETH
+  logo: eth.jpg
+
 - name: KU Leuven
   logo: kuleuven.png
 
