@@ -114,10 +114,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="julia.html">Julia</a></li>
 <li class="toctree-l2"><a class="reference internal" href="matlab.html">Matlab</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">R</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fortran.html">Fortran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rust.html">Rust</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutest.html">CUTEst</a></li>
@@ -199,20 +196,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
   <div class="section" id="r">
 <span id="r-interface"></span><h1>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h1>
-<p>R interface is still experimental. Here is an example of how it works:</p>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="code r highlight-default notranslate"><div class="highlight"><pre><span></span>library(rosqp)
-## example, adapted from ?quadprog::solve.QP
-Dmat       &lt;- diag(3)
-dvec       &lt;- c(0,-5,0)
-Amat       &lt;- matrix(c(-4, 2, 0, -3, 1, -2, 0, 0, 1),3,3)
-bvec       &lt;- c(-8,2,0)
-res = solve_osqp(Dmat, dvec, Amat, bvec)
-print(res$x)
-</pre></div>
-</div>
-</div>
+<p>The R interface is officially on CRAN and documented <a class="reference external" href="https://cran.r-project.org/web/packages/osqp/">here</a>.</p>
 </div>
 
 
