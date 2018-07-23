@@ -118,7 +118,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="cutest.html">CUTEst</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Linear System Solvers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dynamic-shared-library-loading">Dynamic shared library loading</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#suitesparse-ldl">SuiteSparse LDL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qdldl">QDLDL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mkl-pardiso">MKL Pardiso</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#install-with-mkl">Install with MKL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-with-anaconda">Install with Anaconda</a></li>
@@ -237,11 +237,11 @@ The only requirement is that the shared library related to the solver is in the 
 </tbody>
 </table>
 </div>
-<div class="section" id="suitesparse-ldl">
-<h2>SuiteSparse LDL<a class="headerlink" href="#suitesparse-ldl" title="Permalink to this headline">¶</a></h2>
-<p>OSQP comes with <a class="reference external" href="http://faculty.cse.tamu.edu/davis/suitesparse.html">SuiteSparse LDL</a> internally installed.
+<div class="section" id="qdldl">
+<h2>QDLDL<a class="headerlink" href="#qdldl" title="Permalink to this headline">¶</a></h2>
+<p>OSQP comes with <a class="reference external" href="https://github.com/oxfordcontrol/qdldl">QDLDL</a> internally installed.
 It does not require any external shared library.
-SuiteSparse LDL is a sparse direct solver that works well for most small to medium sized problems.
+QDLDL is a sparse direct solver that works well for most small to medium sized problems.
 However, its becomes not really efficient for large scale problems since it is not multi-threaded.</p>
 </div>
 <div class="section" id="mkl-pardiso">
