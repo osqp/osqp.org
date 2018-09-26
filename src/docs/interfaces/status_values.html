@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Status values &mdash; OSQP 0.4.0 documentation</title>
+  <title>Status values &mdash; OSQP 0.4.1 documentation</title>
   
 
   
@@ -81,7 +81,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -251,8 +251,25 @@ The <em>inaccurate</em> statuses define when the optimality, primal infeasibilit
 <td>OSQP_UNSOLVED</td>
 <td>-10</td>
 </tr>
+<tr class="row-even"><td>problem non convex</td>
+<td>OSQP_NON_CVX</td>
+<td>-7</td>
+</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>We recommend the user to <strong>check the convexity of their problem before
+passing it to OSQP</strong>! If the user passes a non-convex problem we do not
+assure the solver will be able to detect it.</p>
+<p class="last">OSQP will try to detect <strong>non-convex</strong> problems by checking if the residuals
+diverge or if there are any issues in the initial factorization (if a direct
+method is used). It will detect non-convex problems when one or more of the
+eigenvalues of <code class="code docutils literal notranslate"><span class="pre">P</span></code> are “clearly” negative, i.e., when <code class="code docutils literal notranslate"><span class="pre">P</span> <span class="pre">+</span> <span class="pre">sigma</span>
+<span class="pre">*</span> <span class="pre">I</span></code> is not positive semidefinite. However, it might fail to detect
+non-convexity when <code class="code docutils literal notranslate"><span class="pre">P</span></code> has slightly negative eigenvalues, i.e., when
+<code class="code docutils literal notranslate"><span class="pre">P</span> <span class="pre">+</span> <span class="pre">sigma</span> <span class="pre">*</span> <span class="pre">I</span></code> is positive semidefinite and <code class="code docutils literal notranslate"><span class="pre">P</span></code> is not.</p>
+</div>
 </div>
 
 
@@ -297,7 +314,7 @@ The <em>inaccurate</em> statuses define when the optimality, primal infeasibilit
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4.0',
+            VERSION:'0.4.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
