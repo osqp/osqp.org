@@ -204,7 +204,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
   \mbox{minimize} &amp; \frac{1}{2} x^T \begin{bmatrix}4 &amp; 1\\ 1 &amp; 2 \end{bmatrix} x + \begin{bmatrix}1 \\ 1\end{bmatrix}^T x \\
   \mbox{subject to} &amp; \begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix} \leq \begin{bmatrix} 1 &amp; 1\\ 1 &amp; 0\\ 0 &amp; 1\end{bmatrix} x \leq  \begin{bmatrix}1 \\ 0.7 \\ 0.7\end{bmatrix}
 \end{array}\end{split}\]</div>
-<p>We show below how to solve the problem in Python, Matlab and C.</p>
+<p>We show below how to solve the problem in Python, Matlab, Julia and C.</p>
 <div class="section" id="python">
 <h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osqp</span>
@@ -353,7 +353,7 @@ results = OSQP.solve!(prob)
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Bartolomeo Stellato, Goran Banjac.
+        &copy; Copyright 2018, Bartolomeo Stellato, Goran Banjac
 
     </p>
   </div>
@@ -372,21 +372,14 @@ results = OSQP.solve!(prob)
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.4.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
