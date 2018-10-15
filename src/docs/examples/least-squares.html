@@ -290,7 +290,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 
 <span class="c1"># Define problem</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="n">objective</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">sum_squares</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">sum_squares</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Solve with OSQP</span>

@@ -117,6 +117,8 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Huber fitting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#matlab">Matlab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cvxpy">CVXPY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yalmip">YALMIP</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lasso.html">Lasso</a></li>
@@ -209,13 +211,11 @@ The fitting problem is written as</p>
     u^2         &amp; |u| \le 1 \\
     (2|u| - 1)  &amp; |u| &gt; 1
 \end{cases}\end{split}\]</div>
-<p>The problem has the following equivalent form,</p>
+<p>The problem has the following equivalent form (see <a class="reference external" href="http://doi.org/10.1109/34.877518">here</a> for more details)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{ll}
-  \mbox{minimize}   &amp; \frac{1}{2} u^T u + \boldsymbol{1}^T v \\
-  \mbox{subject to} &amp; -u-v \le Ax - b \le u+v \\
-                    &amp; 0 \le u \le 1 \\
-                    &amp; v \ge 0
+  \mbox{minimize}   &amp; u^T u + 2\,\boldsymbol{1}^T v \\
+  \mbox{subject to} &amp; -v \le Ax - b - u \le v
 \end{array}\end{split}\]</div>
 <div class="section" id="python">
 <h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
@@ -235,17 +235,16 @@ The fitting problem is written as</p>
     <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mf">10.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">ind95</span><span class="p">)</span>
 
 <span class="c1"># OSQP data</span>
-<span class="n">Im</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">block_diag</span><span class="p">((</span><span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="n">Im</span><span class="p">,</span>
-                       <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">))),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="n">Im</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">block_diag</span><span class="p">((</span><span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">2</span><span class="o">*</span><span class="n">Im</span><span class="p">,</span>
+                       <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">))))</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span>
-        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">Ad</span><span class="p">,</span> <span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">]),</span>
-        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">]),</span>
-        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)])</span>
-        <span class="p">])</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
-<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)])</span>
-<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">)])</span>
+        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">]),</span>
+        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">])</span>
+    <span class="p">])</span><span class="o">.</span><span class="n">tocsc</span><span class="p">()</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">)])</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">b</span><span class="p">])</span>
 
 <span class="c1"># Create an OSQP object</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">osqp</span><span class="o">.</span><span class="n">OSQP</span><span class="p">()</span>
@@ -271,13 +270,12 @@ The fitting problem is written as</p>
 
 <span class="o">%</span> <span class="n">OSQP</span> <span class="n">data</span>
 <span class="n">Im</span> <span class="o">=</span> <span class="n">speye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">blkdiag</span><span class="p">(</span><span class="n">sparse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">Im</span><span class="p">,</span> <span class="n">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">));</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
-<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ad</span><span class="p">,</span> <span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">;</span>
-     <span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">;</span>
-     <span class="n">sparse</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">speye</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)];</span>
-<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">;</span> <span class="o">-</span><span class="n">inf</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
-<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="n">inf</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">b</span><span class="p">;</span> <span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">inf</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">blkdiag</span><span class="p">(</span><span class="n">sparse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">Im</span><span class="p">,</span> <span class="n">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">));</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="mi">2</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">;</span>
+     <span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">];</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">;</span> <span class="o">-</span><span class="n">inf</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="n">inf</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">b</span><span class="p">];</span>
 
 <span class="o">%</span> <span class="n">Create</span> <span class="n">an</span> <span class="n">OSQP</span> <span class="nb">object</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">osqp</span><span class="p">;</span>
@@ -287,6 +285,53 @@ The fitting problem is written as</p>
 
 <span class="o">%</span> <span class="n">Solve</span> <span class="n">problem</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cvxpy">
+<h2>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvxpy</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sparse</span>
+
+<span class="c1"># Generate problem data</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span>
+<span class="n">x_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">ind95</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.95</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_true</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">ind95</span><span class="p">)</span> \
+    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mf">10.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">ind95</span><span class="p">)</span>
+
+<span class="c1"># Define problem</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">huber</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># Solve with OSQP</span>
+<span class="n">Problem</span><span class="p">(</span><span class="n">Minimize</span><span class="p">(</span><span class="n">objective</span><span class="p">))</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="n">OSQP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yalmip">
+<h2>YALMIP<a class="headerlink" href="#yalmip" title="Permalink to this headline">¶</a></h2>
+<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Generate</span> <span class="n">problem</span> <span class="n">data</span>
+<span class="n">rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sprandn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="n">x_true</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="n">ind95</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">x_true</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="n">ind95</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ind95</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Define</span> <span class="n">problem</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sdpvar</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="n">huber</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">Solve</span> <span class="k">with</span> <span class="n">OSQP</span>
+<span class="n">options</span> <span class="o">=</span> <span class="n">sdpsettings</span><span class="p">(</span><span class="s1">&#39;solver&#39;</span><span class="p">,</span> <span class="s1">&#39;osqp&#39;</span><span class="p">);</span>
+<span class="n">optimize</span><span class="p">([],</span> <span class="n">objective</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
