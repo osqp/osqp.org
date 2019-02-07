@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python &mdash; OSQP 0.4.1 documentation</title>
+  <title>Python &mdash; OSQP 0.5.0 documentation</title>
   
 
   
@@ -81,7 +81,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.4.1
+                0.5.0
               </div>
             
           
@@ -277,22 +277,26 @@ If they are sparse matrices are in another format, the interface will attempt to
 <tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">solve_time</span></code></td>
 <td>Solve time</td>
 </tr>
-<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">polish_time</span></code></td>
+<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">update_time</span></code></td>
+<td>Update time</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">polish_time</span></code></td>
 <td>Polish time</td>
 </tr>
-<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">run_time</span></code></td>
-<td>Total run time: setup + solve + polish</td>
+<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">run_time</span></code></td>
+<td>Total run time: setup/update + solve + polish</td>
 </tr>
-<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">rho_estimate</span></code></td>
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">rho_estimate</span></code></td>
 <td>Optimal rho estimate</td>
 </tr>
-<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">rho_updates</span></code></td>
+<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">rho_updates</span></code></td>
 <td>Number of rho updates</td>
 </tr>
 </tbody>
 </table>
 <p>Note that if multiple solves are executed from single setup, then after the
-first one <code class="code docutils literal notranslate"><span class="pre">run_time</span></code> includes only <code class="code docutils literal notranslate"><span class="pre">solve_time</span></code> + <code class="code docutils literal notranslate"><span class="pre">polish_time</span></code>.</p>
+first one <code class="code docutils literal notranslate"><span class="pre">run_time</span></code> includes <code class="code docutils literal notranslate"><span class="pre">update_time</span></code> + <code class="code docutils literal notranslate"><span class="pre">solve_time</span></code>
++ <code class="code docutils literal notranslate"><span class="pre">polish_time</span></code>.</p>
 </div>
 <div class="section" id="update">
 <h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
