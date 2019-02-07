@@ -24,7 +24,7 @@
 - title: Many interfaces
   icon: far fa-hand-pointer
   description: >
-    OSQP supports many interfaces including C/C++, Fortran, Matlab, Python, Julia, Rust.
+    OSQP supports many interfaces including C/C++, Fortran, Matlab, Python, R, Julia, Rust.
 
 - title: Library-free
   icon: fas fa-dove
