@@ -10,6 +10,7 @@ source "https://rubygems.org"
 # Happy Jekylling!
 gem "jekyll", "~> 3.7.0"
 
+
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.0"
 
@@ -23,11 +24,8 @@ group :jekyll_plugins do
   gem "jekyll-assets"
 end
 
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# Bootstrap
+gem 'bootstrap', "~> 4.1.3"
 gem 'jquery-rails'
-gem "bootstrap", ">= 4.1.2"
-
-
