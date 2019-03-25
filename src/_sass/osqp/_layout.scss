@@ -1,8 +1,11 @@
 // Intro jumbotron
 .head-intro {
- background: url(../images/home_header.jpg) center;
- background-size: cover;
- height: 500px;
+ // background: url(../images/home_header.jpg) center;
+ // background: black;
+ // background-size: cover;
+ // height: 500px;
+// width: 100%;
+height: 100vh;
  color: white;
  // text-shadow: 0px 2px 3px #555;
   // -webkit-background-size: 100% 100%;           [> Safari 3.0 <]
@@ -112,4 +115,14 @@ text-align: left;
     -moz-filter:    grayscale(100%);
     -ms-filter:     grayscale(100%);
     -o-filter:      grayscale(100%);
+}
+
+#particles-js{
+	background: #224873;
+	z-index: -10;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+	height: 100vh;
 }

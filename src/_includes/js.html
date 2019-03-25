@@ -6,6 +6,9 @@
     <script type="text/javascript" src="https://rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
 
 
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <!-- Dynamic typing -->
   <script type="text/javascript">
   var myQuotes =  new Array();
@@ -94,3 +97,38 @@
 	});
 </script>
 
+<script>particlesJS("particles-js", {
+    "particles": {
+        "number": {
+            "value": 60
+        },
+        "shape": {
+            "type": "circle"
+        },
+        "size": {
+            "value": 5,
+            "random": true
+        },
+        "line_linked": {
+            "enable": true
+        },
+        "move": {
+            "enable": true,
+            "speed": 3,
+            "direction": "none",
+            "straight": false
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": false
+            },
+            "onclick": {
+                "enable": false,
+            }
+        },
+        "retina_detect": true
+    }
+});</script>
