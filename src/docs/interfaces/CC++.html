@@ -416,24 +416,9 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="_CPPv313osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="_CPPv213osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="osqp_update_P__OSQPWorkspaceP.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1a5c5c604d45cfee252d8e664c08ae85a7"></span>c_int <code class="descname">osqp_update_P</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Px_new</em>, <em class="property">const</em> c_int *<em>Px_new_idx</em>, c_int <em>P_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix P (upper triangular) without changing sparsity structure.</p>
 <p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
-<p><p>Update elements of matrix P (upper triangular) without changing sparsity structure.</p>
-<dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: P_new_n &gt; nnzP &lt;0: error in the update</dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new</span></code>: Vector of new elements in P-&gt;x (upper triangular) </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new_idx</span></code>: Index mapping new elements to positions in P-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">P_new_n</span></code>: Number of new elements to be changed </li>
-</ul>
-</dd>
-</dl>
-</p>
-<p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: P_new_n &gt; nnzP &lt;0: error in update_matrices() </dd>
+<dd>output flag: 0: OK 1: P_new_n &gt; nnzP &lt;0: error in the update </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
@@ -450,25 +435,10 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dt id="_CPPv413osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int">
 <span id="_CPPv313osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="_CPPv213osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="osqp_update_A__OSQPWorkspaceP.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1a9d6c5e4721ee980ecc83a05f307414de"></span>c_int <code class="descname">osqp_update_A</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Ax_new</em>, <em class="property">const</em> c_int *<em>Ax_new_idx</em>, c_int <em>A_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix A without changing sparsity structure.</p>
-<p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole P-&gt;x is replaced.</p>
-<p><p>Update elements of matrix A without changing sparsity structure.</p>
-<dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: A_new_n &gt; nnzA &lt;0: error in the update</dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new</span></code>: Vector of new elements in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new_idx</span></code>: Index mapping new elements to positions in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">A_new_n</span></code>: Number of new elements to be changed </li>
-</ul>
-</dd>
-</dl>
-</p>
-<p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole P-&gt;x is replaced.</p>
+<p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole A-&gt;x is replaced.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: A_new_n &gt; nnzA &lt;0: error in update_matrices() </dd>
+<dd>output flag: 0: OK 1: A_new_n &gt; nnzA &lt;0: error in the update </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
@@ -486,29 +456,10 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="_CPPv315osqp_update_P_AP13OSQPWorkspacePK7c_floatPK5c_int5c_intPK7c_floatPK5c_int5c_int"></span><span id="_CPPv215osqp_update_P_AP13OSQPWorkspacePK7c_floatPK5c_int5c_intPK7c_floatPK5c_int5c_int"></span><span id="osqp_update_P_A__OSQPWorkspaceP.c_floatCP.c_intCP.c_int.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1ae60b0ecefdf13deda2ec97a19964b9b7"></span>c_int <code class="descname">osqp_update_P_A</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Px_new</em>, <em class="property">const</em> c_int *<em>Px_new_idx</em>, c_int <em>P_new_n</em>, <em class="property">const</em> c_float *<em>Ax_new</em>, <em class="property">const</em> c_int *<em>Ax_new_idx</em>, c_int <em>A_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415osqp_update_P_AP13OSQPWorkspacePK7c_floatPK5c_int5c_intPK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix P (upper triangular) and elements of matrix A without changing sparsity structure.</p>
 <p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
-<p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole P-&gt;x is replaced.</p>
-<p><p>Update elements of matrix P (upper triangular) and elements of matrix A without changing sparsity structure.</p>
-<dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: P_new_n &gt; nnzP 2: A_new_n &gt; nnzA &lt;0: error in the update</dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new</span></code>: Vector of new elements in P-&gt;x (upper triangular) </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new_idx</span></code>: Index mapping new elements to positions in P-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">P_new_n</span></code>: Number of new elements to be changed </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new</span></code>: Vector of new elements in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new_idx</span></code>: Index mapping new elements to positions in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">A_new_n</span></code>: Number of new elements to be changed </li>
-</ul>
-</dd>
-</dl>
-</p>
-<p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
-<p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole P-&gt;x is replaced.</p>
+<p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole A-&gt;x is replaced.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: P_new_n &gt; nnzP 2: A_new_n &gt; nnzA &lt;0: error in update_matrices() </dd>
+<dd>output flag: 0: OK 1: P_new_n &gt; nnzP 2: A_new_n &gt; nnzA &lt;0: error in the update </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
 <li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
