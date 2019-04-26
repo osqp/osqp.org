@@ -205,7 +205,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <h2>Binaries<a class="headerlink" href="#binaries" title="Permalink to this headline">¶</a></h2>
 <p>Precompiled platform-dependent Matlab binaries are available on <a class="reference external" href="https://bintray.com/bstellato/generic/OSQP">Bintray</a>.</p>
 <p>To install the interface, just run the following commands:</p>
-<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websave</span><span class="p">(</span><span class="s1">&#39;install_osqp.m&#39;</span><span class="p">,</span> <span class="s1">&#39;https://dl.bintray.com/bstellato/generic/OSQP/0.5.0/install_osqp.m&#39;</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">websave</span><span class="p">(</span><span class="s">&#39;install_osqp.m&#39;</span><span class="p">,</span> <span class="s">&#39;https://dl.bintray.com/bstellato/generic/OSQP/0.5.0/install_osqp.m&#39;</span><span class="p">);</span>
 <span class="n">install_osqp</span>
 </pre></div>
 </div>
@@ -214,29 +214,29 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
 <p>You need to install the following (see <a class="reference internal" href="sources.html#build-from-sources"><span class="std std-ref">Build from sources</span></a> for more details):</p>
 <ul class="simple">
-<li>A supported 64bit <a class="reference external" href="https://www.mathworks.com/support/compilers.html">C/C++ compiler</a></li>
-<li><a class="reference external" href="https://cmake.org/">CMake</a></li>
+<li><p>A supported 64bit <a class="reference external" href="https://www.mathworks.com/support/compilers.html">C/C++ compiler</a></p></li>
+<li><p><a class="reference external" href="https://cmake.org/">CMake</a></p></li>
 </ul>
 <p>After you install both, check that your compiler is selected by executing</p>
-<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mex</span> <span class="o">-</span><span class="n">setup</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">mex</span> <span class="o">-</span><span class="n">setup</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p><strong>Windows</strong>: If Matlab does not find TDM-GCC, you need to set the environment variable <code class="code docutils literal notranslate"><span class="pre">MW_MINGW64_LOC</span></code> as follows</p>
-<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setenv</span><span class="p">(</span><span class="s1">&#39;MW_MINGW64_LOC&#39;</span><span class="p">,</span> <span class="s1">&#39;C:\TDM-GCC-64&#39;</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">setenv</span><span class="p">(</span><span class="s">&#39;MW_MINGW64_LOC&#39;</span><span class="p">,</span> <span class="s">&#39;C:\TDM-GCC-64&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="last">where <code class="code docutils literal notranslate"><span class="pre">C:\TDM-GCC-64</span></code> is the installation folder for TDM-GCC.</p>
+<p>where <code class="code docutils literal notranslate"><span class="pre">C:\TDM-GCC-64</span></code> is the installation folder for TDM-GCC.</p>
 </div>
 <p>You can now build the interface by running inside Matlab</p>
-<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span>!git clone --recurse-submodules https://github.com/oxfordcontrol/osqp-matlab
-cd osqp-matlab
-make_osqp
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="sx">!git clone --recurse-submodules https://github.com/oxfordcontrol/osqp-matlab</span>
+<span class="n">cd</span> <span class="n">osqp</span><span class="o">-</span><span class="n">matlab</span>
+<span class="n">make_osqp</span>
 </pre></div>
 </div>
 <p>Then you can add the interface to the search path by executing from the same directory</p>
-<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
 <span class="n">savepath</span>
 </pre></div>
 </div>

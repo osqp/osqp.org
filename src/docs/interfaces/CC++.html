@@ -226,24 +226,23 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dd><p>Initialize OSQP solver allocating memory.</p>
 <p>All the inputs must be already allocated in memory before calling.</p>
 <p>It performs:<ul class="simple">
-<li>data and settings validation</li>
-<li>problem data scaling</li>
-<li>automatic parameters tuning (if enabled)</li>
-<li>setup linear system solver:<ul>
-<li>direct solver: KKT matrix factorization is performed here</li>
-<li>indirect solver: KKT matrix preconditioning is performed here</li>
+<li><p>data and settings validation</p></li>
+<li><p>problem data scaling</p></li>
+<li><p>automatic parameters tuning (if enabled)</p></li>
+<li><p>setup linear system solver:<ul>
+<li><p>direct solver: KKT matrix factorization is performed here</p></li>
+<li><p>indirect solver: KKT matrix preconditioning is performed here</p></li>
 </ul>
-</li>
+</p></li>
 </ul>
 </p>
 <p>NB: This is the only function that allocates dynamic memory and is not used during code generation</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Solver environment </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: Problem data </li>
-<li><code class="docutils literal notranslate"><span class="pre">settings</span></code>: Solver settings </li>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Solver environment </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Problem data </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">settings</span></code>: Solver settings </p></li>
 </ul>
 </dd>
 </dl>
@@ -258,12 +257,11 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <p>The solution is stored in the <em>work-&gt;solution</em> structure</p>
 <p>If the problem is primal infeasible, the certificate is stored in <em>work-&gt;delta_y</em> </p>
 <p>If the problem is dual infeasible, the certificate is stored in <em>work-&gt;delta_x</em> </p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag for errors </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace allocated </li>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag for errors </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace allocated </p></li>
 </ul>
 </dd>
 </dl>
@@ -274,12 +272,11 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dt id="_CPPv412osqp_cleanupP13OSQPWorkspace">
 <span id="_CPPv312osqp_cleanupP13OSQPWorkspace"></span><span id="_CPPv212osqp_cleanupP13OSQPWorkspace"></span><span id="osqp_cleanup__OSQPWorkspaceP"></span><span class="target" id="df/d16/osqp_8h_1a1e4d4a89b260e564d9d4c07f5b95616a"></span>c_int <code class="descname">osqp_cleanup</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412osqp_cleanupP13OSQPWorkspace" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Cleanup workspace by deallocating memory</p>
-<p>This function is not used in code generation <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag for errors </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </li>
+<p>This function is not used in code generation <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag for errors </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </p></li>
 </ul>
 </dd>
 </dl>
@@ -296,14 +293,13 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv415osqp_warm_startP13OSQPWorkspacePK7c_floatPK7c_float">
 <span id="_CPPv315osqp_warm_startP13OSQPWorkspacePK7c_floatPK7c_float"></span><span id="_CPPv215osqp_warm_startP13OSQPWorkspacePK7c_floatPK7c_float"></span><span id="osqp_warm_start__OSQPWorkspaceP.c_floatCP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1a3837d8cf590d7dfc6232bb7882dd8628"></span>c_int <code class="descname">osqp_warm_start</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>x</em>, <em class="property">const</em> c_float *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415osqp_warm_startP13OSQPWorkspacePK7c_floatPK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Warm start primal and dual variables <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">x</span></code>: Primal variable </li>
-<li><code class="docutils literal notranslate"><span class="pre">y</span></code>: Dual variable </li>
+<dd><p>Warm start primal and dual variables <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: Primal variable </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: Dual variable </p></li>
 </ul>
 </dd>
 </dl>
@@ -313,13 +309,12 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv417osqp_warm_start_xP13OSQPWorkspacePK7c_float">
 <span id="_CPPv317osqp_warm_start_xP13OSQPWorkspacePK7c_float"></span><span id="_CPPv217osqp_warm_start_xP13OSQPWorkspacePK7c_float"></span><span id="osqp_warm_start_x__OSQPWorkspaceP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1a846c47ab273db3b33101f67ae046257c"></span>c_int <code class="descname">osqp_warm_start_x</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417osqp_warm_start_xP13OSQPWorkspacePK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Warm start primal variable <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">x</span></code>: Primal variable </li>
+<dd><p>Warm start primal variable <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: Primal variable </p></li>
 </ul>
 </dd>
 </dl>
@@ -329,13 +324,12 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv417osqp_warm_start_yP13OSQPWorkspacePK7c_float">
 <span id="_CPPv317osqp_warm_start_yP13OSQPWorkspacePK7c_float"></span><span id="_CPPv217osqp_warm_start_yP13OSQPWorkspacePK7c_float"></span><span id="osqp_warm_start_y__OSQPWorkspaceP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1af927004f14a07c019153238141c6c805"></span>c_int <code class="descname">osqp_warm_start_y</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417osqp_warm_start_yP13OSQPWorkspacePK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Warm start dual variable <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">y</span></code>: Dual variable </li>
+<dd><p>Warm start dual variable <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: Dual variable </p></li>
 </ul>
 </dd>
 </dl>
@@ -349,13 +343,12 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv420osqp_update_lin_costP13OSQPWorkspacePK7c_float">
 <span id="_CPPv320osqp_update_lin_costP13OSQPWorkspacePK7c_float"></span><span id="_CPPv220osqp_update_lin_costP13OSQPWorkspacePK7c_float"></span><span id="osqp_update_lin_cost__OSQPWorkspaceP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1afe3b2e8fc11a75a90f62a1348710624a"></span>c_int <code class="descname">osqp_update_lin_cost</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>q_new</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420osqp_update_lin_costP13OSQPWorkspacePK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Update linear cost in the problem <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag for errors and warnings </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </li>
-<li><code class="docutils literal notranslate"><span class="pre">q_new</span></code>: New linear cost </li>
+<dd><p>Update linear cost in the problem <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag for errors and warnings </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">q_new</span></code>: New linear cost </p></li>
 </ul>
 </dd>
 </dl>
@@ -365,13 +358,12 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv423osqp_update_lower_boundP13OSQPWorkspacePK7c_float">
 <span id="_CPPv323osqp_update_lower_boundP13OSQPWorkspacePK7c_float"></span><span id="_CPPv223osqp_update_lower_boundP13OSQPWorkspacePK7c_float"></span><span id="osqp_update_lower_bound__OSQPWorkspaceP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1a7b62869a3a168ff793659ec3c4f4b9df"></span>c_int <code class="descname">osqp_update_lower_bound</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>l_new</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423osqp_update_lower_boundP13OSQPWorkspacePK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Update lower bound in the problem constraints <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag: 1 if new lower bound is not &lt;= than upper bound </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </li>
-<li><code class="docutils literal notranslate"><span class="pre">l_new</span></code>: New lower bound </li>
+<dd><p>Update lower bound in the problem constraints <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag: 1 if new lower bound is not &lt;= than upper bound </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l_new</span></code>: New lower bound </p></li>
 </ul>
 </dd>
 </dl>
@@ -381,13 +373,12 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv423osqp_update_upper_boundP13OSQPWorkspacePK7c_float">
 <span id="_CPPv323osqp_update_upper_boundP13OSQPWorkspacePK7c_float"></span><span id="_CPPv223osqp_update_upper_boundP13OSQPWorkspacePK7c_float"></span><span id="osqp_update_upper_bound__OSQPWorkspaceP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1a7d3fbc2531ecd4cddece5897a4368f23"></span>c_int <code class="descname">osqp_update_upper_bound</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>u_new</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423osqp_update_upper_boundP13OSQPWorkspacePK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Update upper bound in the problem constraints <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag: 1 if new upper bound is not &gt;= than lower bound </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </li>
-<li><code class="docutils literal notranslate"><span class="pre">u_new</span></code>: New upper bound </li>
+<dd><p>Update upper bound in the problem constraints <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag: 1 if new upper bound is not &gt;= than lower bound </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u_new</span></code>: New upper bound </p></li>
 </ul>
 </dd>
 </dl>
@@ -397,14 +388,13 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="function">
 <dt id="_CPPv418osqp_update_boundsP13OSQPWorkspacePK7c_floatPK7c_float">
 <span id="_CPPv318osqp_update_boundsP13OSQPWorkspacePK7c_floatPK7c_float"></span><span id="_CPPv218osqp_update_boundsP13OSQPWorkspacePK7c_floatPK7c_float"></span><span id="osqp_update_bounds__OSQPWorkspaceP.c_floatCP.c_floatCP"></span><span class="target" id="df/d16/osqp_8h_1a207715d769b3c9cca9cdec0eb5e03301"></span>c_int <code class="descname">osqp_update_bounds</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>l_new</em>, <em class="property">const</em> c_float *<em>u_new</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418osqp_update_boundsP13OSQPWorkspacePK7c_floatPK7c_float" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Update lower and upper bounds in the problem constraints <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Exitflag: 1 if new lower bound is not &lt;= than new upper bound </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </li>
-<li><code class="docutils literal notranslate"><span class="pre">l_new</span></code>: New lower bound </li>
-<li><code class="docutils literal notranslate"><span class="pre">u_new</span></code>: New upper bound </li>
+<dd><p>Update lower and upper bounds in the problem constraints <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Exitflag: 1 if new lower bound is not &lt;= than new upper bound </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l_new</span></code>: New lower bound </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u_new</span></code>: New upper bound </p></li>
 </ul>
 </dd>
 </dl>
@@ -416,15 +406,14 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="_CPPv313osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="_CPPv213osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="osqp_update_P__OSQPWorkspaceP.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1a5c5c604d45cfee252d8e664c08ae85a7"></span>c_int <code class="descname">osqp_update_P</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Px_new</em>, <em class="property">const</em> c_int *<em>Px_new_idx</em>, c_int <em>P_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413osqp_update_PP13OSQPWorkspacePK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix P (upper triangular) without changing sparsity structure.</p>
 <p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: P_new_n &gt; nnzP &lt;0: error in the update </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new</span></code>: Vector of new elements in P-&gt;x (upper triangular) </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new_idx</span></code>: Index mapping new elements to positions in P-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">P_new_n</span></code>: Number of new elements to be changed </li>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>output flag: 0: OK 1: P_new_n &gt; nnzP &lt;0: error in the update </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Px_new</span></code>: Vector of new elements in P-&gt;x (upper triangular) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Px_new_idx</span></code>: Index mapping new elements to positions in P-&gt;x </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P_new_n</span></code>: Number of new elements to be changed </p></li>
 </ul>
 </dd>
 </dl>
@@ -436,15 +425,14 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="_CPPv313osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="_CPPv213osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int"></span><span id="osqp_update_A__OSQPWorkspaceP.c_floatCP.c_intCP.c_int"></span><span class="target" id="df/d16/osqp_8h_1a9d6c5e4721ee980ecc83a05f307414de"></span>c_int <code class="descname">osqp_update_A</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<em>work</em>, <em class="property">const</em> c_float *<em>Ax_new</em>, <em class="property">const</em> c_int *<em>Ax_new_idx</em>, c_int <em>A_new_n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413osqp_update_AP13OSQPWorkspacePK7c_floatPK5c_int5c_int" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Update elements of matrix A without changing sparsity structure.</p>
 <p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole A-&gt;x is replaced.</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: A_new_n &gt; nnzA &lt;0: error in the update </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new</span></code>: Vector of new elements in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new_idx</span></code>: Index mapping new elements to positions in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">A_new_n</span></code>: Number of new elements to be changed </li>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>output flag: 0: OK 1: A_new_n &gt; nnzA &lt;0: error in the update </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ax_new</span></code>: Vector of new elements in A-&gt;x </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ax_new_idx</span></code>: Index mapping new elements to positions in A-&gt;x </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A_new_n</span></code>: Number of new elements to be changed </p></li>
 </ul>
 </dd>
 </dl>
@@ -457,18 +445,17 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dd><p>Update elements of matrix P (upper triangular) and elements of matrix A without changing sparsity structure.</p>
 <p>If Px_new_idx is OSQP_NULL, Px_new is assumed to be as long as P-&gt;x and the whole P-&gt;x is replaced.</p>
 <p>If Ax_new_idx is OSQP_NULL, Ax_new is assumed to be as long as A-&gt;x and the whole A-&gt;x is replaced.</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>output flag: 0: OK 1: P_new_n &gt; nnzP 2: A_new_n &gt; nnzA &lt;0: error in the update </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new</span></code>: Vector of new elements in P-&gt;x (upper triangular) </li>
-<li><code class="docutils literal notranslate"><span class="pre">Px_new_idx</span></code>: Index mapping new elements to positions in P-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">P_new_n</span></code>: Number of new elements to be changed </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new</span></code>: Vector of new elements in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">Ax_new_idx</span></code>: Index mapping new elements to positions in A-&gt;x </li>
-<li><code class="docutils literal notranslate"><span class="pre">A_new_n</span></code>: Number of new elements to be changed </li>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>output flag: 0: OK 1: P_new_n &gt; nnzP 2: A_new_n &gt; nnzA &lt;0: error in the update </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code>: Workspace structure </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Px_new</span></code>: Vector of new elements in P-&gt;x (upper triangular) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Px_new_idx</span></code>: Index mapping new elements to positions in P-&gt;x </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P_new_n</span></code>: Number of new elements to be changed </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ax_new</span></code>: Vector of new elements in A-&gt;x </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ax_new_idx</span></code>: Index mapping new elements to positions in A-&gt;x </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A_new_n</span></code>: Number of new elements to be changed </p></li>
 </ul>
 </dd>
 </dl>
@@ -481,8 +468,8 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="c-cpp-data-types"></span><h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
 <p>The most basic used datatypes are</p>
 <ul class="simple">
-<li><code class="code docutils literal notranslate"><span class="pre">c_int</span></code>: can be <code class="code docutils literal notranslate"><span class="pre">long</span></code> or <code class="code docutils literal notranslate"><span class="pre">int</span></code> if the compiler flag <code class="code docutils literal notranslate"><span class="pre">DLONG</span></code> is set or not</li>
-<li><code class="code docutils literal notranslate"><span class="pre">c_float</span></code>: can be a <code class="code docutils literal notranslate"><span class="pre">float</span></code> or a <code class="code docutils literal notranslate"><span class="pre">double</span></code> if the compiler flag <code class="code docutils literal notranslate"><span class="pre">DFLOAT</span></code> is set or not.</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">c_int</span></code>: can be <code class="code docutils literal notranslate"><span class="pre">long</span></code> or <code class="code docutils literal notranslate"><span class="pre">int</span></code> if the compiler flag <code class="code docutils literal notranslate"><span class="pre">DLONG</span></code> is set or not</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">c_float</span></code>: can be a <code class="code docutils literal notranslate"><span class="pre">float</span></code> or a <code class="code docutils literal notranslate"><span class="pre">double</span></code> if the compiler flag <code class="code docutils literal notranslate"><span class="pre">DFLOAT</span></code> is set or not.</p></li>
 </ul>
 <p>The relevant structures used in the API are</p>
 <div class="section" id="data">

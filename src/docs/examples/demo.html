@@ -210,9 +210,9 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <p>We show below how to solve the problem in Python, Matlab, Julia and C.</p>
 <div class="section" id="python">
 <h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osqp</span>
-<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sparse</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osqp</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="kn">as</span> <span class="nn">sparse</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="c1"># Define problem data</span>
 <span class="n">P</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
@@ -234,52 +234,52 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </div>
 <div class="section" id="matlab">
 <h2>Matlab<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
-<div class="code matlab highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Define</span> <span class="n">problem</span> <span class="n">data</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">];</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
-<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">];</span>
-<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mf">0.7</span><span class="p">;</span> <span class="mf">0.7</span><span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Define problem data</span>
+<span class="n">P</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span>
+<span class="n">q</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">A</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="n">l</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">u</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mf">0.7</span><span class="p">;</span> <span class="mf">0.7</span><span class="p">];</span>
 
-<span class="o">%</span> <span class="n">Create</span> <span class="n">an</span> <span class="n">OSQP</span> <span class="nb">object</span>
-<span class="n">prob</span> <span class="o">=</span> <span class="n">osqp</span><span class="p">;</span>
+<span class="c">% Create an OSQP object</span>
+<span class="n">prob</span> <span class="p">=</span> <span class="n">osqp</span><span class="p">;</span>
 
-<span class="o">%</span> <span class="n">Setup</span> <span class="n">workspace</span> <span class="ow">and</span> <span class="n">change</span> <span class="n">alpha</span> <span class="n">parameter</span>
-<span class="n">prob</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="c">% Setup workspace and change alpha parameter</span>
+<span class="n">prob</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
-<span class="o">%</span> <span class="n">Solve</span> <span class="n">problem</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">();</span>
+<span class="c">% Solve problem</span>
+<span class="n">res</span> <span class="p">=</span> <span class="n">prob</span><span class="p">.</span><span class="n">solve</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="julia">
 <h2>Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h2>
-<div class="code julia highlight-default notranslate"><div class="highlight"><pre><span></span>import OSQP
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="n">OSQP</span>
 
-# Define problem data
-P = sparse([4. 1.; 1. 2.])
-q = [1.; 1.]
-A = sparse([1. 1.; 1. 0.; 0. 1.])
-u = [1.; 0.7; 0.7]
-l = [1.; 0.; 0.]
+<span class="c"># Define problem data</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">([</span><span class="mf">4.</span> <span class="mf">1.</span><span class="p">;</span> <span class="mf">1.</span> <span class="mf">2.</span><span class="p">])</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">;</span> <span class="mf">1.</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">([</span><span class="mf">1.</span> <span class="mf">1.</span><span class="p">;</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">;</span> <span class="mf">0.</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">;</span> <span class="mf">0.7</span><span class="p">;</span> <span class="mf">0.7</span><span class="p">]</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">;</span> <span class="mf">0.</span><span class="p">;</span> <span class="mf">0.</span><span class="p">]</span>
 
-# Crate OSQP object
-prob = OSQP.Model()
+<span class="c"># Crate OSQP object</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">OSQP</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
 
-# Setup workspace and change alpha parameter
-OSQP.setup!(prob; P=P, q=q, A=A, l=l, u=u, alpha=1)
+<span class="c"># Setup workspace and change alpha parameter</span>
+<span class="n">OSQP</span><span class="o">.</span><span class="n">setup!</span><span class="p">(</span><span class="n">prob</span><span class="p">;</span> <span class="n">P</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-# Solve problem
-results = OSQP.solve!(prob)
+<span class="c"># Solve problem</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">OSQP</span><span class="o">.</span><span class="n">solve!</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="c">
 <h2>C<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;osqp.h&quot;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;osqp.h&quot;</span><span class="cp"></span>
 
-<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">//</span> <span class="n">Load</span> <span class="n">problem</span> <span class="n">data</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Load problem data</span>
     <span class="n">c_float</span> <span class="n">P_x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">4.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">,</span> <span class="p">};</span>
     <span class="n">c_int</span> <span class="n">P_nnz</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
     <span class="n">c_int</span> <span class="n">P_i</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">};</span>
@@ -294,15 +294,15 @@ results = OSQP.solve!(prob)
     <span class="n">c_int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="n">c_int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 
-    <span class="o">//</span> <span class="n">Problem</span> <span class="n">settings</span>
-    <span class="n">OSQPSettings</span> <span class="o">*</span> <span class="n">settings</span> <span class="o">=</span> <span class="p">(</span><span class="n">OSQPSettings</span> <span class="o">*</span><span class="p">)</span><span class="n">c_malloc</span><span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="n">OSQPSettings</span><span class="p">));</span>
+    <span class="c1">// Problem settings</span>
+    <span class="n">OSQPSettings</span> <span class="o">*</span> <span class="n">settings</span> <span class="o">=</span> <span class="p">(</span><span class="n">OSQPSettings</span> <span class="o">*</span><span class="p">)</span><span class="n">c_malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">OSQPSettings</span><span class="p">));</span>
 
-    <span class="o">//</span> <span class="n">Structures</span>
-    <span class="n">OSQPWorkspace</span> <span class="o">*</span> <span class="n">work</span><span class="p">;</span>  <span class="o">//</span> <span class="n">Workspace</span>
-    <span class="n">OSQPData</span> <span class="o">*</span> <span class="n">data</span><span class="p">;</span>  <span class="o">//</span> <span class="n">OSQPData</span>
+    <span class="c1">// Structures</span>
+    <span class="n">OSQPWorkspace</span> <span class="o">*</span> <span class="n">work</span><span class="p">;</span>  <span class="c1">// Workspace</span>
+    <span class="n">OSQPData</span> <span class="o">*</span> <span class="n">data</span><span class="p">;</span>  <span class="c1">// OSQPData</span>
 
-    <span class="o">//</span> <span class="n">Populate</span> <span class="n">data</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">OSQPData</span> <span class="o">*</span><span class="p">)</span><span class="n">c_malloc</span><span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="n">OSQPData</span><span class="p">));</span>
+    <span class="c1">// Populate data</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">OSQPData</span> <span class="o">*</span><span class="p">)</span><span class="n">c_malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">OSQPData</span><span class="p">));</span>
     <span class="n">data</span><span class="o">-&gt;</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
     <span class="n">data</span><span class="o">-&gt;</span><span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
     <span class="n">data</span><span class="o">-&gt;</span><span class="n">P</span> <span class="o">=</span> <span class="n">csc_matrix</span><span class="p">(</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">,</span> <span class="n">data</span><span class="o">-&gt;</span><span class="n">n</span><span class="p">,</span> <span class="n">P_nnz</span><span class="p">,</span> <span class="n">P_x</span><span class="p">,</span> <span class="n">P_i</span><span class="p">,</span> <span class="n">P_p</span><span class="p">);</span>
@@ -312,17 +312,17 @@ results = OSQP.solve!(prob)
     <span class="n">data</span><span class="o">-&gt;</span><span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
 
 
-    <span class="o">//</span> <span class="n">Define</span> <span class="n">Solver</span> <span class="n">settings</span> <span class="k">as</span> <span class="n">default</span>
+    <span class="c1">// Define Solver settings as default</span>
     <span class="n">osqp_set_default_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">);</span>
-    <span class="n">settings</span><span class="o">-&gt;</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="o">//</span> <span class="n">Change</span> <span class="n">alpha</span> <span class="n">parameter</span>
+    <span class="n">settings</span><span class="o">-&gt;</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="c1">// Change alpha parameter</span>
 
-    <span class="o">//</span> <span class="n">Setup</span> <span class="n">workspace</span>
+    <span class="c1">// Setup workspace</span>
     <span class="n">work</span> <span class="o">=</span> <span class="n">osqp_setup</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">settings</span><span class="p">);</span>
 
-    <span class="o">//</span> <span class="n">Solve</span> <span class="n">Problem</span>
+    <span class="c1">// Solve Problem</span>
     <span class="n">osqp_solve</span><span class="p">(</span><span class="n">work</span><span class="p">);</span>
 
-    <span class="o">//</span> <span class="n">Cleanup</span>
+    <span class="c1">// Cleanup</span>
     <span class="n">osqp_cleanup</span><span class="p">(</span><span class="n">work</span><span class="p">);</span>
     <span class="n">c_free</span><span class="p">(</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">);</span>
     <span class="n">c_free</span><span class="p">(</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">P</span><span class="p">);</span>

@@ -192,11 +192,11 @@ content="https://osqp.org/docs/_static/img/logo.png">
   <div class="section" id="cvxpy">
 <h1>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.cvxpy.org/">CVXPY</a> 1.0 supports the OSQP solver by default. After defining your problem, you can solve it with OSQP by just calling</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>OSQP is the default QP solver used. To specify it explicitly together with some options you can execute</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="n">OSQP</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="n">OSQP</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>where we set the <code class="code docutils literal notranslate"><span class="pre">max_iter</span></code> option to <code class="code docutils literal notranslate"><span class="pre">2000</span></code>.</p>

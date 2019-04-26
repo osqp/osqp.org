@@ -201,71 +201,71 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="id1"></span><h1>Status values<a class="headerlink" href="#status-values" title="Permalink to this headline">¶</a></h1>
 <p>These are the exit statuses, their respective constants and values returned by the solver as defined in <a class="reference external" href="https://github.com/oxfordcontrol/osqp/blob/master/include/constants.h">constants.h</a>.
 The <em>inaccurate</em> statuses define when the optimality, primal infeasibility or dual infeasibility conditions are satisfied with tolerances 10 times larger than the ones set.</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="42%" />
-<col width="49%" />
-<col width="10%" />
+<col style="width: 42%" />
+<col style="width: 49%" />
+<col style="width: 10%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Status</th>
-<th class="head">Constant</th>
-<th class="head">Value</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Constant</p></th>
+<th class="head"><p>Value</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>solved</td>
-<td>OSQP_SOLVED</td>
-<td>1</td>
+<tbody>
+<tr class="row-even"><td><p>solved</p></td>
+<td><p>OSQP_SOLVED</p></td>
+<td><p>1</p></td>
 </tr>
-<tr class="row-odd"><td>solved inaccurate</td>
-<td>OSQP_SOLVED_INACCURATE</td>
-<td>2</td>
+<tr class="row-odd"><td><p>solved inaccurate</p></td>
+<td><p>OSQP_SOLVED_INACCURATE</p></td>
+<td><p>2</p></td>
 </tr>
-<tr class="row-even"><td>maximum iterations reached</td>
-<td>OSQP_MAX_ITER_REACHED</td>
-<td>-2</td>
+<tr class="row-even"><td><p>maximum iterations reached</p></td>
+<td><p>OSQP_MAX_ITER_REACHED</p></td>
+<td><p>-2</p></td>
 </tr>
-<tr class="row-odd"><td>primal infeasible</td>
-<td>OSQP_PRIMAL_INFEASIBLE</td>
-<td>-3</td>
+<tr class="row-odd"><td><p>primal infeasible</p></td>
+<td><p>OSQP_PRIMAL_INFEASIBLE</p></td>
+<td><p>-3</p></td>
 </tr>
-<tr class="row-even"><td>primal infeasible inaccurate</td>
-<td>OSQP_PRIMAL_INFEASIBLE_INACCURATE</td>
-<td>3</td>
+<tr class="row-even"><td><p>primal infeasible inaccurate</p></td>
+<td><p>OSQP_PRIMAL_INFEASIBLE_INACCURATE</p></td>
+<td><p>3</p></td>
 </tr>
-<tr class="row-odd"><td>dual infeasible</td>
-<td>OSQP_DUAL_INFEASIBLE</td>
-<td>-4</td>
+<tr class="row-odd"><td><p>dual infeasible</p></td>
+<td><p>OSQP_DUAL_INFEASIBLE</p></td>
+<td><p>-4</p></td>
 </tr>
-<tr class="row-even"><td>dual infeasible inaccurate</td>
-<td>OSQP_DUAL_INFEASIBLE_INACCURATE</td>
-<td>4</td>
+<tr class="row-even"><td><p>dual infeasible inaccurate</p></td>
+<td><p>OSQP_DUAL_INFEASIBLE_INACCURATE</p></td>
+<td><p>4</p></td>
 </tr>
-<tr class="row-odd"><td>interrupted by user</td>
-<td>OSQP_SIGINT</td>
-<td>-5</td>
+<tr class="row-odd"><td><p>interrupted by user</p></td>
+<td><p>OSQP_SIGINT</p></td>
+<td><p>-5</p></td>
 </tr>
-<tr class="row-even"><td>run time limit reached</td>
-<td>OSQP_TIME_LIMIT_REACHED</td>
-<td>-6</td>
+<tr class="row-even"><td><p>run time limit reached</p></td>
+<td><p>OSQP_TIME_LIMIT_REACHED</p></td>
+<td><p>-6</p></td>
 </tr>
-<tr class="row-odd"><td>unsolved</td>
-<td>OSQP_UNSOLVED</td>
-<td>-10</td>
+<tr class="row-odd"><td><p>unsolved</p></td>
+<td><p>OSQP_UNSOLVED</p></td>
+<td><p>-10</p></td>
 </tr>
-<tr class="row-even"><td>problem non convex</td>
-<td>OSQP_NON_CVX</td>
-<td>-7</td>
+<tr class="row-even"><td><p>problem non convex</p></td>
+<td><p>OSQP_NON_CVX</p></td>
+<td><p>-7</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>We recommend the user to <strong>check the convexity of their problem before
 passing it to OSQP</strong>! If the user passes a non-convex problem we do not
 assure the solver will be able to detect it.</p>
-<p class="last">OSQP will try to detect <strong>non-convex</strong> problems by checking if the residuals
+<p>OSQP will try to detect <strong>non-convex</strong> problems by checking if the residuals
 diverge or if there are any issues in the initial factorization (if a direct
 method is used). It will detect non-convex problems when one or more of the
 eigenvalues of <code class="code docutils literal notranslate"><span class="pre">P</span></code> are “clearly” negative, i.e., when <code class="code docutils literal notranslate"><span class="pre">P</span> <span class="pre">+</span> <span class="pre">sigma</span>

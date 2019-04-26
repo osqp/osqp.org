@@ -194,10 +194,10 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <p>OSQP is an open-source project open to any academic or commercial applications.
 Contributions are welcome as <a class="reference external" href="https://help.github.com/articles/creating-a-pull-request/">GitHub pull requests</a> in any part of the project such as</p>
 <ul class="simple">
-<li>algorithm developments</li>
-<li>interfaces to other languages</li>
-<li>compatibility with new architectures</li>
-<li>linear system solvers interfaces</li>
+<li><p>algorithm developments</p></li>
+<li><p>interfaces to other languages</p></li>
+<li><p>compatibility with new architectures</p></li>
+<li><p>linear system solvers interfaces</p></li>
 </ul>
 <div class="section" id="interfacing-new-linear-system-solvers">
 <span id="id1"></span><h2>Interfacing new linear system solvers<a class="headerlink" href="#interfacing-new-linear-system-solvers" title="Permalink to this headline">¶</a></h2>
@@ -205,8 +205,8 @@ Contributions are welcome as <a class="reference external" href="https://help.gi
 To add a linear system solver interface you need to edit the <code class="code docutils literal notranslate"><span class="pre">lin_sys/</span></code> directory subfolder <code class="code docutils literal notranslate"><span class="pre">direct/</span></code> or <code class="code docutils literal notranslate"><span class="pre">indirect/</span></code> depending on the type of solver.
 Create a subdirectory with your solver name with four files:</p>
 <ul class="simple">
-<li>Dynamic library loading: <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.c</span></code> and <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.h</span></code>.</li>
-<li>Linear system solution: <code class="code docutils literal notranslate"><span class="pre">mysolver.c</span></code> and <code class="code docutils literal notranslate"><span class="pre">mysolver.h</span></code>.</li>
+<li><p>Dynamic library loading: <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.c</span></code> and <code class="code docutils literal notranslate"><span class="pre">mysolver_loader.h</span></code>.</p></li>
+<li><p>Linear system solution: <code class="code docutils literal notranslate"><span class="pre">mysolver.c</span></code> and <code class="code docutils literal notranslate"><span class="pre">mysolver.h</span></code>.</p></li>
 </ul>
 <p>We suggest you to have a look at the <a class="reference external" href="https://github.com/oxfordcontrol/osqp/tree/master/lin_sys/direct/pardiso">MKL Pardiso solver interface</a> for more details.</p>
 <div class="section" id="dynamic-library-loading">
@@ -220,57 +220,57 @@ In addition, the file <code class="code docutils literal notranslate"><span clas
 <p>In this part we define the core of the interface: <strong>linear system solver object</strong>.
 The main functions are the external method</p>
 <ul class="simple">
-<li><code class="code docutils literal notranslate"><span class="pre">init_linsys_solver_mysolver</span></code>: create the instance and perform the setup</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">init_linsys_solver_mysolver</span></code>: create the instance and perform the setup</p></li>
 </ul>
 <p>and the internal methods of the object</p>
 <ul class="simple">
-<li><code class="code docutils literal notranslate"><span class="pre">free_linsys_solver_mysolver</span></code>: free the instance</li>
-<li><code class="code docutils literal notranslate"><span class="pre">solve_linsys_mysolver</span></code>: solve the linear system</li>
-<li><code class="code docutils literal notranslate"><span class="pre">update_matrices</span></code>: update problem matrices</li>
-<li><code class="code docutils literal notranslate"><span class="pre">update_rho_vec</span></code>: update <span class="math notranslate nohighlight">\(\rho\)</span> as a diagonal vector.</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">free_linsys_solver_mysolver</span></code>: free the instance</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">solve_linsys_mysolver</span></code>: solve the linear system</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">update_matrices</span></code>: update problem matrices</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">update_rho_vec</span></code>: update <span class="math notranslate nohighlight">\(\rho\)</span> as a diagonal vector.</p></li>
 </ul>
 <p>After the initializations these functions are assigned to the internal pointers so that, for an instance <code class="code docutils literal notranslate"><span class="pre">s</span></code> they can be called as <code class="code docutils literal notranslate"><span class="pre">s-&gt;free</span></code>, <code class="code docutils literal notranslate"><span class="pre">s-&gt;solve</span></code>, <code class="code docutils literal notranslate"><span class="pre">s-&gt;update_matrices</span></code> and <code class="code docutils literal notranslate"><span class="pre">s-&gt;update_rho_vec</span></code>.</p>
 <p>The linear system solver object is defined in <code class="code docutils literal notranslate"><span class="pre">mysolver.h</span></code> as follows</p>
-<div class="code c highlight-default notranslate"><div class="highlight"><pre><span></span>typedef struct mysolver mysolver_solver;
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">mysolver</span> <span class="n">mysolver_solver</span><span class="p">;</span>
 
-struct mysolver {
-    // Methods
-    enum linsys_solver_type type; // Linear system solver defined in constants.h
+<span class="k">struct</span> <span class="n">mysolver</span> <span class="p">{</span>
+    <span class="c1">// Methods</span>
+    <span class="k">enum</span> <span class="n">linsys_solver_type</span> <span class="n">type</span><span class="p">;</span> <span class="c1">// Linear system solver defined in constants.h</span>
 
-    c_int (*solve)(struct mysolver * self, c_float * b, const OSQPSettings * settings);
-    void (*free)(struct mysolver * self);
-    c_int (*update_matrices)(struct mysolver * self, const csc *P, const csc *A, const OSQPSettings *settings);
-    c_int (*update_rho_vec)(struct mysolver * self, const c_float * rho_vec, const c_int m);
+    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">solve</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">);</span>
+    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">update_matrices</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span><span class="n">settings</span><span class="p">);</span>
+    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">update_rho_vec</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_int</span> <span class="n">m</span><span class="p">);</span>
 
-    // Attributes
-    c_int nthreads; // Number of threads used (required!)
+    <span class="c1">// Attributes</span>
+    <span class="n">c_int</span> <span class="n">nthreads</span><span class="p">;</span> <span class="c1">// Number of threads used (required!)</span>
 
-    // Internal attributes of the solver
-    ...
+    <span class="c1">// Internal attributes of the solver</span>
+    <span class="p">...</span>
 
-    // Internal attributes required for matrix updates
-    c_int * Pdiag_idx, Pdiag_n;  ///&lt; index and number of diagonal elements in P
-    c_int * PtoKKT, * AtoKKT;    ///&lt; Index of elements from P and A to KKT matrix
-    c_int * rhotoKKT;            ///&lt; Index of rho places in KKT matrix
-    ...
+    <span class="c1">// Internal attributes required for matrix updates</span>
+    <span class="n">c_int</span> <span class="o">*</span> <span class="n">Pdiag_idx</span><span class="p">,</span> <span class="n">Pdiag_n</span><span class="p">;</span>  <span class="c1">///&lt; index and number of diagonal elements in P</span>
+    <span class="n">c_int</span> <span class="o">*</span> <span class="n">PtoKKT</span><span class="p">,</span> <span class="o">*</span> <span class="n">AtoKKT</span><span class="p">;</span>    <span class="c1">///&lt; Index of elements from P and A to KKT matrix</span>
+    <span class="n">c_int</span> <span class="o">*</span> <span class="n">rhotoKKT</span><span class="p">;</span>            <span class="c1">///&lt; Index of rho places in KKT matrix</span>
+    <span class="p">...</span>
 
-};
+<span class="p">};</span>
 
-// Initialize mysolver solver
-mysolver_solver *init_linsys_solver_mysolver(const csc * P, const csc * A, c_float sigma, c_float * rho_vec, c_int polish);
+<span class="c1">// Initialize mysolver solver</span>
+<span class="n">mysolver_solver</span> <span class="o">*</span><span class="nf">init_linsys_solver_mysolver</span><span class="p">(</span><span class="k">const</span> <span class="n">csc</span> <span class="o">*</span> <span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">c_float</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="n">c_int</span> <span class="n">polish</span><span class="p">);</span>
 
-// Solve linear system and store result in b
-c_int solve_linsys_mysolver(mysolver_solver * s, c_float * b, const OSQPSettings * settings);
+<span class="c1">// Solve linear system and store result in b</span>
+<span class="n">c_int</span> <span class="nf">solve_linsys_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
 
- // Update linear system solver matrices
-c_int update_linsys_solver_matrices_mysolver(mysolver_solver * s,
-                const csc *P, const csc *A, const OSQPSettings *settings);
+ <span class="c1">// Update linear system solver matrices</span>
+<span class="n">c_int</span> <span class="nf">update_linsys_solver_matrices_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span>
+                <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span><span class="n">settings</span><span class="p">);</span>
 
-// Update rho parameter in linear system solver structure
-c_int update_linsys_solver_rho_vec_mysolver(mysolver_solver * s, const c_float * rho_vec, const c_int m);
+<span class="c1">// Update rho parameter in linear system solver structure</span>
+<span class="n">c_int</span> <span class="nf">update_linsys_solver_rho_vec_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_int</span> <span class="n">m</span><span class="p">);</span>
 
-// Free linear system solver
-void free_linsys_solver_mysolver(mysolver_solver * s);
+<span class="c1">// Free linear system solver</span>
+<span class="kt">void</span> <span class="nf">free_linsys_solver_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The function details are coded in the <code class="code docutils literal notranslate"><span class="pre">mysolver.c</span></code> file.</p>

@@ -198,43 +198,43 @@ optimization package for solving convex quadratic programs in the form</p>
 <p class="rubric">Citing OSQP</p>
 <p>If you are using OSQP for your work, we encourage you to</p>
 <ul class="simple">
-<li><a class="reference internal" href="citing/index.html#citing"><span class="std std-ref">Cite the related papers</span></a></li>
-<li>Put a star on GitHub <a class="reference external" href="https://github.com/oxfordcontrol/osqp"><img alt="github-star" src="https://img.shields.io/github/stars/oxfordcontrol/osqp.svg?style=social&amp;label=Star" /></a></li>
+<li><p><a class="reference internal" href="citing/index.html#citing"><span class="std std-ref">Cite the related papers</span></a></p></li>
+<li><p>Put a star on GitHub <a class="reference external" href="https://github.com/oxfordcontrol/osqp"><img alt="github-star" src="https://img.shields.io/github/stars/oxfordcontrol/osqp.svg?style=social&amp;label=Star" /></a></p></li>
 </ul>
 <p><strong>We are looking forward to hearing your success stories with OSQP!</strong> Please <a class="reference external" href="mailto:bartolomeo&#46;stellato&#37;&#52;&#48;gmail&#46;com">share them with us</a>.</p>
 <p class="rubric">Features</p>
-<dl class="glossary docutils">
-<dt id="term-efficient">Efficient</dt>
-<dd>It uses a custom ADMM-based first-order method requiring only a single matrix factorization in the setup phase. All the other operations are extremely cheap. It also implements custom sparse linear algebra routines exploiting structures in the problem data.</dd>
-<dt id="term-robust">Robust</dt>
-<dd>The algorithm is absolutely division free after the setup and it requires no assumptions on problem data (the problem only needs to be convex). It just works!</dd>
-<dt id="term-detects-primal-dual-infeasible-problems">Detects primal / dual infeasible problems</dt>
-<dd>When the problem is primal or dual infeasible, OSQP detects it. It is the first available QP solver based on first-order methods able to do so.</dd>
-<dt id="term-embeddable">Embeddable</dt>
-<dd>It has an easy interface to generate customized embeddable C code with no memory manager required.</dd>
-<dt id="term-library-free">Library-free</dt>
-<dd>It requires no external library to run.</dd>
-<dt id="term-efficiently-warm-started">Efficiently warm started</dt>
-<dd>It can be easily warm-started and the matrix factorization can be cached to solve parametrized problems extremely efficiently.</dd>
-<dt id="term-interfaces">Interfaces</dt>
-<dd>It can be interfaced to C, C++, Fortran (soon!), Python, Julia and Matlab.</dd>
+<dl class="glossary simple">
+<dt id="term-efficient">Efficient</dt><dd><p>It uses a custom ADMM-based first-order method requiring only a single matrix factorization in the setup phase. All the other operations are extremely cheap. It also implements custom sparse linear algebra routines exploiting structures in the problem data.</p>
+</dd>
+<dt id="term-robust">Robust</dt><dd><p>The algorithm is absolutely division free after the setup and it requires no assumptions on problem data (the problem only needs to be convex). It just works!</p>
+</dd>
+<dt id="term-detects-primal-dual-infeasible-problems">Detects primal / dual infeasible problems</dt><dd><p>When the problem is primal or dual infeasible, OSQP detects it. It is the first available QP solver based on first-order methods able to do so.</p>
+</dd>
+<dt id="term-embeddable">Embeddable</dt><dd><p>It has an easy interface to generate customized embeddable C code with no memory manager required.</p>
+</dd>
+<dt id="term-library-free">Library-free</dt><dd><p>It requires no external library to run.</p>
+</dd>
+<dt id="term-efficiently-warm-started">Efficiently warm started</dt><dd><p>It can be easily warm-started and the matrix factorization can be cached to solve parametrized problems extremely efficiently.</p>
+</dd>
+<dt id="term-interfaces">Interfaces</dt><dd><p>It can be interfaced to C, C++, Fortran (soon!), Python, Julia and Matlab.</p>
+</dd>
 </dl>
 <p class="rubric">License</p>
 <p>OSQP is distributed under the <a class="reference external" href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a></p>
 <p class="rubric">Credits</p>
 <p>The following people have been involved in the development of OSQP:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://stellato.io/">Bartolomeo Stellato</a> (MIT): main development</li>
-<li><a class="reference external" href="http://people.ee.ethz.ch/~gbanjac/">Goran Banjac</a> (ETH Zürich): main development</li>
-<li><a class="reference external" href="http://web.stanford.edu/~moehle/">Nicholas Moehle</a> (Stanford University): methods, maths, and code generation</li>
-<li><a class="reference external" href="http://users.ox.ac.uk/~engs1373/">Paul Goulart</a> (University of Oxford): methods, maths, and Matlab interface</li>
-<li><a class="reference external" href="http://cse.lab.imtlucca.it/~bemporad/">Alberto Bemporad</a> (IMT Lucca): methods and maths</li>
-<li><a class="reference external" href="http://web.stanford.edu/~boyd/">Stephen Boyd</a> (Stanford University): methods and maths</li>
+<li><p><a class="reference external" href="https://stellato.io/">Bartolomeo Stellato</a> (MIT): main development</p></li>
+<li><p><a class="reference external" href="http://people.ee.ethz.ch/~gbanjac/">Goran Banjac</a> (ETH Zürich): main development</p></li>
+<li><p><a class="reference external" href="http://web.stanford.edu/~moehle/">Nicholas Moehle</a> (Stanford University): methods, maths, and code generation</p></li>
+<li><p><a class="reference external" href="http://users.ox.ac.uk/~engs1373/">Paul Goulart</a> (University of Oxford): methods, maths, and Matlab interface</p></li>
+<li><p><a class="reference external" href="http://cse.lab.imtlucca.it/~bemporad/">Alberto Bemporad</a> (IMT Lucca): methods and maths</p></li>
+<li><p><a class="reference external" href="http://web.stanford.edu/~boyd/">Stephen Boyd</a> (Stanford University): methods and maths</p></li>
 </ul>
 <p>Interfaces development</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.numerical.rl.ac.uk/people/nimg/nimg.html">Nick Gould</a> (Rutherford Appleton Laboratory): Fortran and CUTEst interfaces</li>
-<li><a class="reference external" href="mailto:eabarnard&#37;&#52;&#48;gmail&#46;com">Ed Barnard</a> (University of Oxford): Rust interface</li>
+<li><p><a class="reference external" href="http://www.numerical.rl.ac.uk/people/nimg/nimg.html">Nick Gould</a> (Rutherford Appleton Laboratory): Fortran and CUTEst interfaces</p></li>
+<li><p><a class="reference external" href="mailto:eabarnard&#37;&#52;&#48;gmail&#46;com">Ed Barnard</a> (University of Oxford): Rust interface</p></li>
 </ul>
 <p class="rubric">Bug reports and support</p>
 <p>Please report any issues via the <a class="reference external" href="https://github.com/oxfordcontrol/osqp/issues">Github issue tracker</a>. All types of issues are welcome including bug reports, documentation typos, feature requests and so on.</p>
