@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Julia &mdash; OSQP 0.5.0 documentation</title>
+  <title>Julia &mdash; OSQP 0.6.0 documentation</title>
   
 
   
@@ -84,7 +84,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.5.0
+                0.6.0
               </div>
             
           
@@ -135,7 +135,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="cutest.html">CUTEst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solver_settings.html">Solver settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_systems_solvers.html">Linear Systems Solvers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values and errors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parsers/index.html">Parsers</a></li>
@@ -264,7 +264,7 @@ The allowed parameters are defined in <a class="reference internal" href="solver
 <td><p>Solver status</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">status_val</span></code></p></td>
-<td><p>Solver status value as in <a class="reference internal" href="status_values.html#status-values"><span class="std std-ref">Status values</span></a></p></td>
+<td><p>Solver status value as in <a class="reference internal" href="status_values.html#status-values"><span class="std std-ref">Status values and errors</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">status_polish</span></code></p></td>
 <td><p>Polishing status</p></td>
@@ -311,7 +311,7 @@ first one <code class="code docutils literal notranslate"><span class="pre">run_
 <div class="section" id="update-problem-vectors">
 <h3>Update problem vectors<a class="headerlink" href="#update-problem-vectors" title="Permalink to this headline">¶</a></h3>
 <p>Vectors <code class="code docutils literal notranslate"><span class="pre">q</span></code>, <code class="code docutils literal notranslate"><span class="pre">l</span></code> and <code class="code docutils literal notranslate"><span class="pre">u</span></code> can be updated with new values <code class="code docutils literal notranslate"><span class="pre">q_new</span></code>, <code class="code docutils literal notranslate"><span class="pre">l_new</span></code> and <code class="code docutils literal notranslate"><span class="pre">u_new</span></code> by just running</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>OSQP.update!(m; q=q_new, l=l_new, u=u_new)
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">OSQP</span><span class="o">.</span><span class="n">update!</span><span class="p">(</span><span class="n">m</span><span class="p">;</span> <span class="n">q</span><span class="o">=</span><span class="n">q_new</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l_new</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">u_new</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The user does not have to specify all the keyword arguments.</p>

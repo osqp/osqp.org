@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python &mdash; OSQP 0.5.0 documentation</title>
+  <title>Python &mdash; OSQP 0.6.0 documentation</title>
   
 
   
@@ -84,7 +84,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.5.0
+                0.6.0
               </div>
             
           
@@ -117,7 +117,10 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#import">Import</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#solve">Solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solve">Solve</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#solve-in-just-one-function-with-gil-disabled">Solve in just one function (with GIL disabled)</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#update">Update</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#update-problem-vectors">Update problem vectors</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#update-problem-matrices">Update problem matrices</a></li>
@@ -135,7 +138,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="cutest.html">CUTEst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solver_settings.html">Solver settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_systems_solvers.html">Linear Systems Solvers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values and errors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parsers/index.html">Parsers</a></li>
@@ -260,7 +263,7 @@ If they are sparse matrices are in another format, the interface will attempt to
 <td><p>Solver status</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">status_val</span></code></p></td>
-<td><p>Solver status value as in <a class="reference internal" href="status_values.html#status-values"><span class="std std-ref">Status values</span></a></p></td>
+<td><p>Solver status value as in <a class="reference internal" href="status_values.html#status-values"><span class="std std-ref">Status values and errors</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">status_polish</span></code></p></td>
 <td><p>Polishing status</p></td>
@@ -300,6 +303,14 @@ If they are sparse matrices are in another format, the interface will attempt to
 <p>Note that if multiple solves are executed from single setup, then after the
 first one <code class="code docutils literal notranslate"><span class="pre">run_time</span></code> includes <code class="code docutils literal notranslate"><span class="pre">update_time</span></code> + <code class="code docutils literal notranslate"><span class="pre">solve_time</span></code>
 + <code class="code docutils literal notranslate"><span class="pre">polish_time</span></code>.</p>
+<div class="section" id="solve-in-just-one-function-with-gil-disabled">
+<h3>Solve in just one function (with GIL disabled)<a class="headerlink" href="#solve-in-just-one-function-with-gil-disabled" title="Permalink to this headline">¶</a></h3>
+<p>We have a dedicated solve function that performs <code class="code docutils literal notranslate"><span class="pre">setup</span></code> and <code class="code docutils literal notranslate"><span class="pre">solve</span></code> operations for you. It also disables the GIL in case you
+need it. Just run it from the main module without creating the object as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">osqp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="update">
 <h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>

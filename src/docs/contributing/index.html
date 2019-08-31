@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Contributing &mdash; OSQP 0.5.0 documentation</title>
+  <title>Contributing &mdash; OSQP 0.6.0 documentation</title>
   
 
   
@@ -84,7 +84,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.5.0
+                0.6.0
               </div>
             
           
@@ -237,10 +237,10 @@ The main functions are the external method</p>
     <span class="c1">// Methods</span>
     <span class="k">enum</span> <span class="n">linsys_solver_type</span> <span class="n">type</span><span class="p">;</span> <span class="c1">// Linear system solver defined in constants.h</span>
 
-    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">solve</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
+    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">solve</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">b</span><span class="p">);</span>
     <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">);</span>
-    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">update_matrices</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span><span class="n">settings</span><span class="p">);</span>
-    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">update_rho_vec</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_int</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">update_matrices</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">A</span><span class="p">);</span>
+    <span class="n">c_int</span> <span class="p">(</span><span class="o">*</span><span class="n">update_rho_vec</span><span class="p">)(</span><span class="k">struct</span> <span class="n">mysolver</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">);</span>
 
     <span class="c1">// Attributes</span>
     <span class="n">c_int</span> <span class="n">nthreads</span><span class="p">;</span> <span class="c1">// Number of threads used (required!)</span>
@@ -257,17 +257,16 @@ The main functions are the external method</p>
 <span class="p">};</span>
 
 <span class="c1">// Initialize mysolver solver</span>
-<span class="n">mysolver_solver</span> <span class="o">*</span><span class="nf">init_linsys_solver_mysolver</span><span class="p">(</span><span class="k">const</span> <span class="n">csc</span> <span class="o">*</span> <span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">c_float</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="n">c_int</span> <span class="n">polish</span><span class="p">);</span>
+<span class="n">c_int</span> <span class="nf">init_linsys_solver_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">**</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span> <span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">c_float</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="n">c_int</span> <span class="n">polish</span><span class="p">);</span>
 
 <span class="c1">// Solve linear system and store result in b</span>
-<span class="n">c_int</span> <span class="nf">solve_linsys_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span> <span class="n">settings</span><span class="p">);</span>
+<span class="n">c_int</span> <span class="nf">solve_linsys_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">b</span><span class="p">);</span>
 
  <span class="c1">// Update linear system solver matrices</span>
-<span class="n">c_int</span> <span class="nf">update_linsys_solver_matrices_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span>
-                <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="k">const</span> <span class="n">OSQPSettings</span> <span class="o">*</span><span class="n">settings</span><span class="p">);</span>
+<span class="n">c_int</span> <span class="nf">update_linsys_solver_matrices_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">csc</span> <span class="o">*</span><span class="n">A</span><span class="p">);</span>
 
-<span class="c1">// Update rho parameter in linear system solver structure</span>
-<span class="n">c_int</span> <span class="nf">update_linsys_solver_rho_vec_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_int</span> <span class="n">m</span><span class="p">);</span>
+<span class="c1">// Update rho_vec parameter in linear system solver structure</span>
+<span class="n">c_int</span> <span class="nf">update_linsys_solver_rho_vec_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="k">const</span> <span class="n">c_float</span> <span class="o">*</span> <span class="n">rho_vec</span><span class="p">);</span>
 
 <span class="c1">// Free linear system solver</span>
 <span class="kt">void</span> <span class="nf">free_linsys_solver_mysolver</span><span class="p">(</span><span class="n">mysolver_solver</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linear System Solvers &mdash; OSQP 0.5.0 documentation</title>
+  <title>Linear System Solvers &mdash; OSQP 0.6.0 documentation</title>
   
 
   
@@ -84,7 +84,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.5.0
+                0.6.0
               </div>
             
           
@@ -245,7 +245,7 @@ The only requirement is that the shared library related to the solver is in the 
 <p>OSQP comes with <a class="reference external" href="https://github.com/oxfordcontrol/qdldl">QDLDL</a> internally installed.
 It does not require any external shared library.
 QDLDL is a sparse direct solver that works well for most small to medium sized problems.
-However, its becomes not really efficient for large scale problems since it is not multi-threaded.</p>
+However, it becomes not really efficient for large scale problems since it is not multi-threaded.</p>
 </div>
 <div class="section" id="mkl-pardiso">
 <h2>MKL Pardiso<a class="headerlink" href="#mkl-pardiso" title="Permalink to this headline">¶</a></h2>
@@ -283,12 +283,12 @@ To add it, together with its dependencies, to your path, just execute the automa
 <div class="section" id="install-with-anaconda">
 <h3>Install with Anaconda<a class="headerlink" href="#install-with-anaconda" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.anaconda.com/download/">Anaconda Python distribution</a> comes with the intel MKL libraries preinstalled including MKL Pardiso.
-To use this version, the Anaconda libraries folders have to be added to the system path.
-In particular, given the Anaconda installation directory <code class="code docutils literal notranslate"><span class="pre">ANACONDA_ROOT</span></code>, we need to add the following folders:</p>
-<ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">libmkl_rt</span></code>: This library is located in the folder <code class="code docutils literal notranslate"><span class="pre">ANACONDA_ROOT/pkgs/mkl-VERSION/lib</span></code> where <code class="code docutils literal notranslate"><span class="pre">VERSION</span></code> is the version of the <code class="code docutils literal notranslate"><span class="pre">mkl</span></code> package.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">libiomp</span></code>: This library is located in the folder <code class="code docutils literal notranslate"><span class="pre">ANACONDA_ROOT/pkgs/intel-openmp-VERSION/lib</span></code> where <code class="code docutils literal notranslate"><span class="pre">VERSION</span></code> is the version of the <code class="code docutils literal notranslate"><span class="pre">intel-openmp</span></code> package.</p></li>
-</ul>
+To use this version, the Anaconda libraries folders have to be in your system path.
+Anaconda environments should add them automatically so in most cases you do not have to do anything. If you get an error where OSQP cannot find MKL, you can add the right path by adding the output from the following command to your path variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;`ls -rd $</span><span class="si">{CONDA_ROOT}</span><span class="s2">/pkgs/*/ | grep mkl-2 | head -n 1`lib:`ls -rd $</span><span class="si">{CONDA_ROOT}</span><span class="s2">/pkgs/*/ | grep intel-openmp- | head -n 1`lib&quot;</span>
+</pre></div>
+</div>
+<p>where <code class="code docutils literal notranslate"><span class="pre">ANACONDA_ROOT</span></code> is the root of your anaconda installation.</p>
 </div>
 </div>
 </div>

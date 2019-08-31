@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C/C++ &mdash; OSQP 0.5.0 documentation</title>
+  <title>C/C++ &mdash; OSQP 0.6.0 documentation</title>
   
 
   
@@ -84,7 +84,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.5.0
+                0.6.0
               </div>
             
           
@@ -141,7 +141,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="cutest.html">CUTEst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solver_settings.html">Solver settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_systems_solvers.html">Linear Systems Solvers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values and errors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parsers/index.html">Parsers</a></li>
@@ -221,8 +221,8 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <span id="c-main-api"></span><h2>Main solver API<a class="headerlink" href="#main-solver-api" title="Permalink to this headline">¶</a></h2>
 <p>The main C/C++ API is imported from the header <code class="code docutils literal notranslate"><span class="pre">osqp.h</span></code> and provides the following functions</p>
 <dl class="function">
-<dt id="_CPPv410osqp_setupPK8OSQPDataP12OSQPSettings">
-<span id="_CPPv310osqp_setupPK8OSQPDataP12OSQPSettings"></span><span id="_CPPv210osqp_setupPK8OSQPDataP12OSQPSettings"></span><span id="osqp_setup__OSQPDataCP.OSQPSettingsP"></span><span class="target" id="df/d16/osqp_8h_1aa9a76bcf557ad087199aa6683e8f03f7"></span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> *<code class="sig-name descname">osqp_setup</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv48OSQPData" title="OSQPData">OSQPData</a> *<em>data</em>, <a class="reference internal" href="#_CPPv412OSQPSettings" title="OSQPSettings">OSQPSettings</a> *<em>settings</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410osqp_setupPK8OSQPDataP12OSQPSettings" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv410osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings">
+<span id="_CPPv310osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings"></span><span id="_CPPv210osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings"></span><span id="osqp_setup__OSQPWorkspacePP.OSQPDataCP.OSQPSettingsCP"></span><span class="target" id="df/d16/osqp_8h_1ab72a28dc87cf8c55a576c1a2fba6df24"></span>c_int <code class="sig-name descname">osqp_setup</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> **<em>workp</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv48OSQPData" title="OSQPData">OSQPData</a> *<em>data</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv412OSQPSettings" title="OSQPSettings">OSQPSettings</a> *<em>settings</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize OSQP solver allocating memory.</p>
 <p>All the inputs must be already allocated in memory before calling.</p>
 <p>It performs:<ul class="simple">
@@ -238,9 +238,10 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </p>
 <p>NB: This is the only function that allocates dynamic memory and is not used during code generation</p>
 <p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>Solver environment </p>
+<dt><strong>Return</strong></dt><dd><p>Exitflag for errors (0 if no errors) </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">workp</span></code>: Solver workspace pointer </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: Problem data </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">settings</span></code>: Solver settings </p></li>
 </ul>
@@ -495,7 +496,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N8OSQPData1PE">
 <span id="_CPPv3N8OSQPData1PE"></span><span id="_CPPv2N8OSQPData1PE"></span><span id="OSQPData::P__cscP"></span><span class="target" id="d9/d78/struct_o_s_q_p_data_1a4596ee17e4496de2e3ab2aba225fc432"></span><a class="reference internal" href="#_CPPv43csc" title="csc">csc</a> *<code class="sig-name descname">P</code><a class="headerlink" href="#_CPPv4N8OSQPData1PE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>quadratic part of the cost P in csc format (size n x n). It can be either the full P or only the upper triangular part. The workspace stores only the upper triangular part </p>
+<dd><p>the upper triangular part of the quadratic cost matrix P in csc format (size n x n). </p>
 </dd></dl>
 
 <dl class="member">
@@ -525,17 +526,17 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </div>
 </dd></dl>
 
-<p>The matrices are defined in <a class="reference external" href="https://people.sc.fsu.edu/~jburkardt/data/cc/cc.html">Compressed Sparse Column (CSC) format</a>.</p>
+<p>The matrices are defined in <a class="reference external" href="https://people.sc.fsu.edu/~jburkardt/data/cc/cc.html">Compressed Sparse Column (CSC) format</a> using zero-based indexing.</p>
 <dl class="class">
 <dt id="_CPPv43csc">
 <span id="_CPPv33csc"></span><span id="_CPPv23csc"></span><span id="csc"></span><span class="target" id="d1/d66/structcsc"></span><em class="property">struct </em><code class="sig-name descname">csc</code><a class="headerlink" href="#_CPPv43csc" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Matrix in compressed-column or triplet form </p>
+<dd><p>Matrix in compressed-column form. The structure is used internally to store matrices in the triplet form as well, but the API requires that the matrices are in the CSC format. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="member">
 <dt id="_CPPv4N3csc5nzmaxE">
 <span id="_CPPv3N3csc5nzmaxE"></span><span id="_CPPv2N3csc5nzmaxE"></span><span id="csc::nzmax__c_int"></span><span class="target" id="d1/d66/structcsc_1af08bba669e8d665621fb54164dc2b796"></span>c_int <code class="sig-name descname">nzmax</code><a class="headerlink" href="#_CPPv4N3csc5nzmaxE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>maximum number of entries. </p>
+<dd><p>maximum number of entries </p>
 </dd></dl>
 
 <dl class="member">
@@ -553,7 +554,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N3csc1pE">
 <span id="_CPPv3N3csc1pE"></span><span id="_CPPv2N3csc1pE"></span><span id="csc::p__c_intP"></span><span class="target" id="d1/d66/structcsc_1a2fbab3288fdcc4fc7be6e66ad651bac1"></span>c_int *<code class="sig-name descname">p</code><a class="headerlink" href="#_CPPv4N3csc1pE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>column pointers (size n+1) (col indices (size nzmax) </p>
+<dd><p>column pointers (size n+1); col indices (size nzmax) start from 0 when using triplet format (direct KKT matrix formation) </p>
 </dd></dl>
 
 <dl class="member">
@@ -571,7 +572,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N3csc2nzE">
 <span id="_CPPv3N3csc2nzE"></span><span id="_CPPv2N3csc2nzE"></span><span id="csc::nz__c_int"></span><span class="target" id="d1/d66/structcsc_1a997d88bd1eaf1200053638b3f6a1872e"></span>c_int <code class="sig-name descname">nz</code><a class="headerlink" href="#_CPPv4N3csc2nzE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><em>of entries in triplet matrix, -1 for csc</em></p>
+<dd><p>number of entries in triplet matrix, -1 for csc </p>
 </dd></dl>
 
 </div>
@@ -601,7 +602,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings7scalingE">
 <span id="_CPPv3N12OSQPSettings7scalingE"></span><span id="_CPPv2N12OSQPSettings7scalingE"></span><span id="OSQPSettings::scaling__c_int"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1a97334db7d09d8a616dbd957b103657a4"></span>c_int <code class="sig-name descname">scaling</code><a class="headerlink" href="#_CPPv4N12OSQPSettings7scalingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>heuristic data scaling iterations. If 0, </p>
+<dd><p>heuristic data scaling iterations; if 0, then disabled. </p>
 </dd></dl>
 
 <dl class="member">
@@ -613,25 +614,25 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings21adaptive_rho_intervalE">
 <span id="_CPPv3N12OSQPSettings21adaptive_rho_intervalE"></span><span id="_CPPv2N12OSQPSettings21adaptive_rho_intervalE"></span><span id="OSQPSettings::adaptive_rho_interval__c_int"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1aad9123c597b0e42baf1e68595e78fc23"></span>c_int <code class="sig-name descname">adaptive_rho_interval</code><a class="headerlink" href="#_CPPv4N12OSQPSettings21adaptive_rho_intervalE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Number of iterations between rho. </p>
+<dd><p>number of iterations between rho adaptations; if 0, then it is automatic </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings22adaptive_rho_toleranceE">
 <span id="_CPPv3N12OSQPSettings22adaptive_rho_toleranceE"></span><span id="_CPPv2N12OSQPSettings22adaptive_rho_toleranceE"></span><span id="OSQPSettings::adaptive_rho_tolerance__c_float"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1ae44ddf14fcd7126ff210ddd5c02598c5"></span>c_float <code class="sig-name descname">adaptive_rho_tolerance</code><a class="headerlink" href="#_CPPv4N12OSQPSettings22adaptive_rho_toleranceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Tolerance X for adapting rho. The new rho. </p>
+<dd><p>tolerance X for adapting rho. The new rho has to be X times larger or 1/X times smaller than the current one to trigger a new factorization. </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings21adaptive_rho_fractionE">
 <span id="_CPPv3N12OSQPSettings21adaptive_rho_fractionE"></span><span id="_CPPv2N12OSQPSettings21adaptive_rho_fractionE"></span><span id="OSQPSettings::adaptive_rho_fraction__c_float"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1a29cc84ac590509eb93cf4eea4baf7857"></span>c_float <code class="sig-name descname">adaptive_rho_fraction</code><a class="headerlink" href="#_CPPv4N12OSQPSettings21adaptive_rho_fractionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Interval for adapting rho (fraction of. </p>
+<dd><p>interval for adapting rho (fraction of the setup time) </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings8max_iterE">
 <span id="_CPPv3N12OSQPSettings8max_iterE"></span><span id="_CPPv2N12OSQPSettings8max_iterE"></span><span id="OSQPSettings::max_iter__c_int"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1af82be631016ae0011110740ffb4eefc5"></span>c_int <code class="sig-name descname">max_iter</code><a class="headerlink" href="#_CPPv4N12OSQPSettings8max_iterE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>maximum iterations </p>
+<dd><p>maximum number of iterations </p>
 </dd></dl>
 
 <dl class="member">
@@ -673,7 +674,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings5deltaE">
 <span id="_CPPv3N12OSQPSettings5deltaE"></span><span id="_CPPv2N12OSQPSettings5deltaE"></span><span id="OSQPSettings::delta__c_float"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1a425506906cec5198289f6db390a63f50"></span>c_float <code class="sig-name descname">delta</code><a class="headerlink" href="#_CPPv4N12OSQPSettings5deltaE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>regularization parameter for </p>
+<dd><p>regularization parameter for polishing </p>
 </dd></dl>
 
 <dl class="member">
@@ -685,7 +686,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings18polish_refine_iterE">
 <span id="_CPPv3N12OSQPSettings18polish_refine_iterE"></span><span id="_CPPv2N12OSQPSettings18polish_refine_iterE"></span><span id="OSQPSettings::polish_refine_iter__c_int"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1abd17ba3d12ebb071d2fcbbe329c0fa05"></span>c_int <code class="sig-name descname">polish_refine_iter</code><a class="headerlink" href="#_CPPv4N12OSQPSettings18polish_refine_iterE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>iterative refinement steps in </p>
+<dd><p>number of iterative refinement steps in polishing </p>
 </dd></dl>
 
 <dl class="member">
@@ -697,13 +698,13 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings18scaled_terminationE">
 <span id="_CPPv3N12OSQPSettings18scaled_terminationE"></span><span id="_CPPv2N12OSQPSettings18scaled_terminationE"></span><span id="OSQPSettings::scaled_termination__c_int"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1a8910faf1011d80e6a0cddfd3cce48895"></span>c_int <code class="sig-name descname">scaled_termination</code><a class="headerlink" href="#_CPPv4N12OSQPSettings18scaled_terminationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>boolean, use scaled termination </p>
+<dd><p>boolean, use scaled termination criteria </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings17check_terminationE">
 <span id="_CPPv3N12OSQPSettings17check_terminationE"></span><span id="_CPPv2N12OSQPSettings17check_terminationE"></span><span id="OSQPSettings::check_termination__c_int"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1aab7fca2ec731366b686ac96a16834659"></span>c_int <code class="sig-name descname">check_termination</code><a class="headerlink" href="#_CPPv4N12OSQPSettings17check_terminationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>integer, check termination </p>
+<dd><p>integer, check termination interval; if 0, then termination checking is disabled </p>
 </dd></dl>
 
 <dl class="member">
@@ -715,7 +716,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSettings10time_limitE">
 <span id="_CPPv3N12OSQPSettings10time_limitE"></span><span id="_CPPv2N12OSQPSettings10time_limitE"></span><span id="OSQPSettings::time_limit__c_float"></span><span class="target" id="d7/d93/struct_o_s_q_p_settings_1a4b696fba61de958dd83ebb2658c8dad2"></span>c_float <code class="sig-name descname">time_limit</code><a class="headerlink" href="#_CPPv4N12OSQPSettings10time_limitE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>maximum seconds allowed to solve </p>
+<dd><p>maximum number of seconds allowed to solve the problem; if 0, then disabled </p>
 </dd></dl>
 
 </div>
@@ -733,7 +734,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N12OSQPSolution1xE">
 <span id="_CPPv3N12OSQPSolution1xE"></span><span id="_CPPv2N12OSQPSolution1xE"></span><span id="OSQPSolution::x__c_floatP"></span><span class="target" id="d0/dc1/struct_o_s_q_p_solution_1aa2f42ba9f68b544c72d00e05e35f3f44"></span>c_float *<code class="sig-name descname">x</code><a class="headerlink" href="#_CPPv4N12OSQPSolution1xE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Primal solution. </p>
+<dd><p>primal solution </p>
 </dd></dl>
 
 <dl class="member">
@@ -775,7 +776,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N8OSQPInfo13status_polishE">
 <span id="_CPPv3N8OSQPInfo13status_polishE"></span><span id="_CPPv2N8OSQPInfo13status_polishE"></span><span id="OSQPInfo::status_polish__c_int"></span><span class="target" id="d6/df9/struct_o_s_q_p_info_1a27891b09d870059945733abd97714ac9"></span>c_int <code class="sig-name descname">status_polish</code><a class="headerlink" href="#_CPPv4N8OSQPInfo13status_polishE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>polish status: successful (1), unperformed (0), (-1) </p>
+<dd><p>polish status: successful (1), unperformed (0), (-1) unsuccessful </p>
 </dd></dl>
 
 <dl class="member">
@@ -910,19 +911,19 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace2AxE">
 <span id="_CPPv3N13OSQPWorkspace2AxE"></span><span id="_CPPv2N13OSQPWorkspace2AxE"></span><span id="OSQPWorkspace::Ax__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1ab754ca10fed6d74369fcb5d44860f129"></span>c_float *<code class="sig-name descname">Ax</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace2AxE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Scaled A * x. </p>
+<dd><p>scaled A * x </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace2PxE">
 <span id="_CPPv3N13OSQPWorkspace2PxE"></span><span id="_CPPv2N13OSQPWorkspace2PxE"></span><span id="OSQPWorkspace::Px__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a505d1959902cf499ed41bc1a4fedc5d7"></span>c_float *<code class="sig-name descname">Px</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace2PxE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Scaled P * x. </p>
+<dd><p>scaled P * x </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace3AtyE">
 <span id="_CPPv3N13OSQPWorkspace3AtyE"></span><span id="_CPPv2N13OSQPWorkspace3AtyE"></span><span id="OSQPWorkspace::Aty__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a1f29640f6998969c5e2a25ba2dce3cd6"></span>c_float *<code class="sig-name descname">Aty</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace3AtyE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Scaled A * x. </p>
+<dd><p>scaled A * x </p>
 </dd></dl>
 
 </div>
@@ -931,7 +932,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace7delta_yE">
 <span id="_CPPv3N13OSQPWorkspace7delta_yE"></span><span id="_CPPv2N13OSQPWorkspace7delta_yE"></span><span id="OSQPWorkspace::delta_y__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1afbcaa8b399f72baeb9879bc0e2b9a417"></span>c_float *<code class="sig-name descname">delta_y</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace7delta_yE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Difference of consecutive dual iterates. </p>
+<dd><p>difference between consecutive dual iterates </p>
 </dd></dl>
 
 <dl class="member">
@@ -946,7 +947,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace7delta_xE">
 <span id="_CPPv3N13OSQPWorkspace7delta_xE"></span><span id="_CPPv2N13OSQPWorkspace7delta_xE"></span><span id="OSQPWorkspace::delta_x__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a1df271f84768858582c86b9043125644"></span>c_float *<code class="sig-name descname">delta_x</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace7delta_xE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Difference of consecutive primal iterates. </p>
+<dd><p>difference between consecutive primal iterates </p>
 </dd></dl>
 
 <dl class="member">
@@ -973,13 +974,13 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace8D_temp_AE">
 <span id="_CPPv3N13OSQPWorkspace8D_temp_AE"></span><span id="_CPPv2N13OSQPWorkspace8D_temp_AE"></span><span id="OSQPWorkspace::D_temp_A__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a1c3e28d27ab9e445978dc2aac604f669"></span>c_float *<code class="sig-name descname">D_temp_A</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace8D_temp_AE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>temporary primal variable scaling vectors storing </p>
+<dd><p>temporary primal variable scaling vectors storing norms of A columns </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace6E_tempE">
 <span id="_CPPv3N13OSQPWorkspace6E_tempE"></span><span id="_CPPv2N13OSQPWorkspace6E_tempE"></span><span id="OSQPWorkspace::E_temp__c_floatP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1aee8fdc1b9d81dd42bb27b9b3a2f9abae"></span>c_float *<code class="sig-name descname">E_temp</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace6E_tempE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>temporary constraints scaling vectors storing norms of </p>
+<dd><p>temporary constraints scaling vectors storing norms of A’ columns </p>
 </dd></dl>
 
 </div>
@@ -1006,37 +1007,37 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace11constr_typeE">
 <span id="_CPPv3N13OSQPWorkspace11constr_typeE"></span><span id="_CPPv2N13OSQPWorkspace11constr_typeE"></span><span id="OSQPWorkspace::constr_type__c_intP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a6f7777245b079b6b6c3f7b2d7a200f34"></span>c_int *<code class="sig-name descname">constr_type</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace11constr_typeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Type of constraints: loose (-1), equality (1),. </p>
+<dd><p>Type of constraints: loose (-1), equality (1), inequality (0) </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace8settingsE">
 <span id="_CPPv3N13OSQPWorkspace8settingsE"></span><span id="_CPPv2N13OSQPWorkspace8settingsE"></span><span id="OSQPWorkspace::settings__OSQPSettingsP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a8c303f7bdf057b41f4a15a565505039c"></span><a class="reference internal" href="#_CPPv412OSQPSettings" title="OSQPSettings">OSQPSettings</a> *<code class="sig-name descname">settings</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace8settingsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Problem settings. </p>
+<dd><p>problem settings </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace7scalingE">
 <span id="_CPPv3N13OSQPWorkspace7scalingE"></span><span id="_CPPv2N13OSQPWorkspace7scalingE"></span><span id="OSQPWorkspace::scaling__OSQPScalingP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1ac271b5a7f9ce349b38425f829c412340"></span><a class="reference internal" href="#_CPPv411OSQPScaling" title="OSQPScaling">OSQPScaling</a> *<code class="sig-name descname">scaling</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace7scalingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Scaling vectors. </p>
+<dd><p>scaling vectors </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace8solutionE">
 <span id="_CPPv3N13OSQPWorkspace8solutionE"></span><span id="_CPPv2N13OSQPWorkspace8solutionE"></span><span id="OSQPWorkspace::solution__OSQPSolutionP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a581fcd1ef04332aa89392da2abb8ff5d"></span><a class="reference internal" href="#_CPPv412OSQPSolution" title="OSQPSolution">OSQPSolution</a> *<code class="sig-name descname">solution</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace8solutionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Problem solution. </p>
+<dd><p>problem solution </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace4infoE">
 <span id="_CPPv3N13OSQPWorkspace4infoE"></span><span id="_CPPv2N13OSQPWorkspace4infoE"></span><span id="OSQPWorkspace::info__OSQPInfoP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1a11532ce4f9207244ccf758cd8522810a"></span><a class="reference internal" href="#_CPPv48OSQPInfo" title="OSQPInfo">OSQPInfo</a> *<code class="sig-name descname">info</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace4infoE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Solver information. </p>
+<dd><p>solver information </p>
 </dd></dl>
 
 <dl class="member">
 <dt id="_CPPv4N13OSQPWorkspace5timerE">
 <span id="_CPPv3N13OSQPWorkspace5timerE"></span><span id="_CPPv2N13OSQPWorkspace5timerE"></span><span id="OSQPWorkspace::timer__OSQPTimerP"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1ad9f6008b234048dbf1e145afba6649ac"></span>OSQPTimer *<code class="sig-name descname">timer</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace5timerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Timer object. </p>
+<dd><p>timer object </p>
 </dd></dl>
 
 <dl class="member">
@@ -1049,6 +1050,12 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dt id="_CPPv4N13OSQPWorkspace17clear_update_timeE">
 <span id="_CPPv3N13OSQPWorkspace17clear_update_timeE"></span><span id="_CPPv2N13OSQPWorkspace17clear_update_timeE"></span><span id="OSQPWorkspace::clear_update_time__c_int"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1ab8d26188c1bb9016b538b6ab1145aa70"></span>c_int <code class="sig-name descname">clear_update_time</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace17clear_update_timeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>flag indicating whether the update_time should be cleared </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N13OSQPWorkspace21rho_update_from_solveE">
+<span id="_CPPv3N13OSQPWorkspace21rho_update_from_solveE"></span><span id="_CPPv2N13OSQPWorkspace21rho_update_from_solveE"></span><span id="OSQPWorkspace::rho_update_from_solve__c_int"></span><span class="target" id="d6/da3/struct_o_s_q_p_workspace_1afff146869a63e68c79304ccd771524ab"></span>c_int <code class="sig-name descname">rho_update_from_solve</code><a class="headerlink" href="#_CPPv4N13OSQPWorkspace21rho_update_from_solveE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>flag indicating that osqp_update_rho is called from osqp_solve function </p>
 </dd></dl>
 
 <dl class="member">
@@ -1121,7 +1128,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <dt id="_CPPv4N10OSQPPolish4AredE">
 <span id="_CPPv3N10OSQPPolish4AredE"></span><span id="_CPPv2N10OSQPPolish4AredE"></span><span id="OSQPPolish::Ared__cscP"></span><span class="target" id="de/d59/struct_o_s_q_p_polish_1a0ffed22ca080b350590514ba7ee4c4a3"></span><a class="reference internal" href="#_CPPv43csc" title="csc">csc</a> *<code class="sig-name descname">Ared</code><a class="headerlink" href="#_CPPv4N10OSQPPolish4AredE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ared = vstack[Alow, Aupp]. </p>
-<p>Active rows of A. </p>
+<p>active rows of A </p>
 </dd></dl>
 
 <dl class="member">
