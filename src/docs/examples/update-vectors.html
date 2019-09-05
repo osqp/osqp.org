@@ -122,6 +122,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#matlab">Matlab</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#julia">Julia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#r">R</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c">C</a></li>
 </ul>
 </li>
@@ -305,6 +306,37 @@ Then we update the vectors <span class="math notranslate nohighlight">\(q\)</spa
 
 <span class="c"># Solve updated problem</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">OSQP</span><span class="o">.</span><span class="n">solve!</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="r">
+<h2>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">osqp</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">Matrix</span><span class="p">)</span>
+
+<span class="c1"># Define problem data</span>
+<span class="n">P</span> <span class="o">&lt;-</span> <span class="nf">Matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="n">.,</span> <span class="m">1</span><span class="n">.,</span>
+              <span class="m">1</span><span class="n">.,</span> <span class="m">2</span><span class="n">.)</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">sparse</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="n">.,</span> <span class="m">1</span><span class="n">.)</span>
+<span class="n">A</span> <span class="o">&lt;-</span> <span class="nf">Matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="n">.,</span> <span class="m">1</span><span class="n">.,</span> <span class="m">0</span><span class="n">.,</span>
+              <span class="m">1</span><span class="n">.,</span> <span class="m">0</span><span class="n">.,</span> <span class="m">1</span><span class="n">.)</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">sparse</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="n">.,</span> <span class="m">0</span><span class="n">.,</span> <span class="m">0</span><span class="n">.)</span>
+<span class="n">u</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="n">.,</span> <span class="m">0.7</span><span class="p">,</span> <span class="m">0.7</span><span class="p">)</span>
+
+<span class="c1"># Setup workspace</span>
+<span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">osqp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># Solve problem</span>
+<span class="n">res</span> <span class="o">&lt;-</span> <span class="n">model</span><span class="o">$</span><span class="nf">Solve</span><span class="p">()</span>
+
+<span class="c1"># Update problem</span>
+<span class="n">q_new</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="n">.,</span> <span class="m">3</span><span class="n">.)</span>
+<span class="n">l_new</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="n">.,</span> <span class="m">-1</span><span class="n">.,</span> <span class="m">-1</span><span class="n">.)</span>
+<span class="n">u_new</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="n">.,</span> <span class="m">2.5</span><span class="p">,</span> <span class="m">2.5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">$</span><span class="nf">Update</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="n">q_new</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">l_new</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">u_new</span><span class="p">)</span>
+
+<span class="c1"># Solve updated problem</span>
+<span class="n">res</span> <span class="o">&lt;-</span> <span class="n">model</span><span class="o">$</span><span class="nf">Solve</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
