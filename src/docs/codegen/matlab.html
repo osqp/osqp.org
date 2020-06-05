@@ -287,7 +287,7 @@ then no build files are generated.</p>
 </pre></div>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">emosqp</span></code> is the name of the mex interface specified in the previous section</p>
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'solve'</em><span class="sig-paren">)</span></dt>
 <dd><p>Solve the problem.</p>
@@ -306,7 +306,7 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_lin_cost'</em>, <em class="sig-param">q_new</em><span class="sig-paren">)</span></dt>
 <dd><p>Update linear cost.</p>
@@ -317,7 +317,7 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_lower_bound'</em>, <em class="sig-param">l_new</em><span class="sig-paren">)</span></dt>
 <dd><p>Update lower bound in the constraints.</p>
@@ -328,7 +328,7 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_upper_bound'</em>, <em class="sig-param">u_new</em><span class="sig-paren">)</span></dt>
 <dd><p>Update upper bound in the constraints.</p>
@@ -339,7 +339,7 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_bounds'</em>, <em class="sig-param">l_new</em>, <em class="sig-param">u_new</em><span class="sig-paren">)</span></dt>
 <dd><p>Update lower and upper bounds in the constraints.</p>
@@ -355,7 +355,7 @@ then no build files are generated.</p>
 
 <p>If the code is generated with the option <code class="code docutils literal notranslate"><span class="pre">parameters</span></code> set to
 <code class="code docutils literal notranslate"><span class="pre">'matrices'</span></code>, then the following functions are also provided</p>
-<dl class="function">
+<dl class="py function">
 <dt id="emosqp">
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_P'</em>, <em class="sig-param">Px</em>, <em class="sig-param">Px_idx</em>, <em class="sig-param">Px_n</em><span class="sig-paren">)</span><a class="headerlink" href="#emosqp" title="Permalink to this definition">¶</a></dt>
 <dt>
@@ -378,7 +378,7 @@ all the indices are to be updated</p>
 </div></blockquote>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_A'</em>, <em class="sig-param">Ax</em>, <em class="sig-param">Ax_idx</em>, <em class="sig-param">Ax_n</em><span class="sig-paren">)</span></dt>
 <dd><p>Update nonzero entries of the constraint matrix.</p>
@@ -395,9 +395,9 @@ all the indices are to be updated</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt>
-<code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_P_A'</em>, <em class="sig-param">Px</em>, <em class="sig-param">Px_idx</em>, <em class="sig-param">Px_n</em>, <em class="sig-param">Ax</em>, <em class="sig-param">Ax_idx</em>, <em class="sig-param">Ax_n</em><span class="sig-paren">)</span></dt>
+<dl class="py function">
+<dt id="id0">
+<code class="sig-name descname">emosqp</code><span class="sig-paren">(</span><em class="sig-param">'update_P_A'</em>, <em class="sig-param">Px</em>, <em class="sig-param">Px_idx</em>, <em class="sig-param">Px_n</em>, <em class="sig-param">Ax</em>, <em class="sig-param">Ax_idx</em>, <em class="sig-param">Ax_n</em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
 <dt>
 <code class="sig-name descname">:noindex:</code></dt>
 <dd><p>Update nonzero entries of the quadratic cost and constraint matrices. It considers only the upper-triangular part of P.</p>

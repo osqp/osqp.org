@@ -286,7 +286,7 @@ then no build files are generated.</p>
 </pre></div>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">emosqp</span></code> is the extension name given in the previous section. The module imports the following functions</p>
-<dl class="function">
+<dl class="py function">
 <dt>
 <code class="sig-name descname">solve</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Solve the problem.</p>
@@ -305,9 +305,9 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_lin_cost</code><span class="sig-paren">(</span><em class="sig-param">q_new</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_lin_cost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">q_new</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update linear cost.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -316,9 +316,9 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_lower_bound</code><span class="sig-paren">(</span><em class="sig-param">l_new</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_lower_bound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l_new</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update lower bound in the constraints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -327,9 +327,9 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_upper_bound</code><span class="sig-paren">(</span><em class="sig-param">u_new</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_upper_bound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">u_new</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update upper bound in the constraints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -338,9 +338,9 @@ then no build files are generated.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_bounds</code><span class="sig-paren">(</span><em class="sig-param">l_new</em>, <em class="sig-param">u_new</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_bounds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l_new</span></em>, <em class="sig-param"><span class="n">u_new</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update lower and upper bounds in the constraints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -354,9 +354,9 @@ then no build files are generated.</p>
 
 <p>If the code is generated with the option <code class="code docutils literal notranslate"><span class="pre">parameters</span></code> set to
 <code class="code docutils literal notranslate"><span class="pre">'matrices'</span></code>, the following functions are also provided</p>
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_P</code><span class="sig-paren">(</span><em class="sig-param">Px</em>, <em class="sig-param">Px_idx</em>, <em class="sig-param">Px_n</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_P</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Px</span></em>, <em class="sig-param"><span class="n">Px_idx</span></em>, <em class="sig-param"><span class="n">Px_n</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update nonzero entries of the quadratic cost matrix (only upper triangular) without changing sparsity structure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -371,9 +371,9 @@ all the indices are to be updated</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_A</code><span class="sig-paren">(</span><em class="sig-param">Ax</em>, <em class="sig-param">Ax_idx</em>, <em class="sig-param">Ax_n</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_A</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Ax</span></em>, <em class="sig-param"><span class="n">Ax_idx</span></em>, <em class="sig-param"><span class="n">Ax_n</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update nonzero entries of the constraint matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -388,9 +388,9 @@ all the indices are to be updated</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt>
-<code class="sig-name descname">update_P_A</code><span class="sig-paren">(</span><em class="sig-param">Px</em>, <em class="sig-param">Px_idx</em>, <em class="sig-param">Px_n</em>, <em class="sig-param">Ax</em>, <em class="sig-param">Ax_idx</em>, <em class="sig-param">Ax_n</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">update_P_A</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Px</span></em>, <em class="sig-param"><span class="n">Px_idx</span></em>, <em class="sig-param"><span class="n">Px_n</span></em>, <em class="sig-param"><span class="n">Ax</span></em>, <em class="sig-param"><span class="n">Ax_idx</span></em>, <em class="sig-param"><span class="n">Ax_n</span></em><span class="sig-paren">)</span></dt>
 <dd><p>Update nonzero entries of the quadratic cost and constraint matrices. It considers only the upper-triangular part of P.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
