@@ -31,3 +31,8 @@
 - name: Michel Schubiger
   role: GPU implementation
   affiliation: Schindler R&D
+
+- name: John Lygeros
+  role: Methods and Maths
+  affiliation: ETH Zurich
+  website: https://control.ee.ethz.ch/people/profile.john-lygeros.html
