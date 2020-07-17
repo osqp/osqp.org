@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
+
+  
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -27,16 +33,11 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Contributing" href="../contributing/index.html" />
@@ -100,6 +101,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,6 +124,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -160,7 +163,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Citing OSQP</li>
     
@@ -212,6 +215,20 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </pre></div>
 </div>
 </dd>
+<dt id="term-GPU-implementation">GPU implementation</dt><dd><p>GPU implementation and PCG method for solving linear systems in this <a class="reference external" href="https://arxiv.org/pdf/1912.04263.pdf">paper</a>.</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@article<span class="nb">{</span>osqp-gpu,
+  author  = <span class="nb">{</span>Schubiger, M. and Banjac, G. and Lygeros, J.<span class="nb">}</span>,
+  title   = <span class="nb">{{</span>GPU<span class="nb">}</span> acceleration of <span class="nb">{</span>ADMM<span class="nb">}</span> for large-scale quadratic programming<span class="nb">}</span>,
+  journal = <span class="nb">{</span>Journal of Parallel and Distributed Computing<span class="nb">}</span>,
+  year    = <span class="nb">{</span>2020<span class="nb">}</span>,
+  volume  = <span class="nb">{</span>144<span class="nb">}</span>,
+  pages   = <span class="nb">{</span>55--67<span class="nb">}</span>,
+  doi     = <span class="nb">{</span>10.1016/j.jpdc.2020.05.021<span class="nb">}</span>,
+  url     = <span class="nb">{</span>https://doi.org/10.1016/j.jpdc.2020.05.021<span class="nb">}</span>,
+<span class="nb">}</span>
+</pre></div>
+</div>
+</dd>
 <dt id="term-Code-generation">Code generation</dt><dd><p>Code generation functionality and example in this <a class="reference external" href="https://stanford.edu/~boyd/papers/pdf/osqp_embedded.pdf">paper</a>.</p>
 <div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@inproceedings<span class="nb">{</span>osqp-codegen,
   author    = <span class="nb">{</span>Banjac, G. and Stellato, B. and Moehle, N. and Goulart, P. and Bemporad, A. and Boyd, S.<span class="nb">}</span>,
@@ -220,6 +237,18 @@ content="https://osqp.org/docs/_static/img/logo.png">
   year      = <span class="nb">{</span>2017<span class="nb">}</span>,
   doi       = <span class="nb">{</span>10.1109/CDC.2017.8263928<span class="nb">}</span>,
   url       = <span class="nb">{</span>https://doi.org/10.1109/CDC.2017.8263928<span class="nb">}</span>,
+<span class="nb">}</span>
+</pre></div>
+</div>
+</dd>
+<dt id="term-Mixed-integer-optimization">Mixed-integer optimization</dt><dd><p>A branch-and-bound solver for mixed-integer quadratic optimization in this <a class="reference external" href="https://stellato.io/assets/downloads/publications/2018/miosqp_ecc.pdf">paper</a>.</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@inproceedings<span class="nb">{</span>miosqp,
+  author    = <span class="nb">{</span>Stellato, B. and Naik, V. V. and Bemporad, A. and Goulart, P. and Boyd, S.<span class="nb">}</span>,
+  title     = <span class="nb">{</span>Embedded mixed-integer quadratic optimization using the <span class="nb">{</span>OSQP<span class="nb">}</span> solver<span class="nb">}</span>,
+  booktitle = <span class="nb">{</span>European Control Conference (ECC)<span class="nb">}</span>,
+  year      = <span class="nb">{</span>2018<span class="nb">}</span>,
+  doi       = <span class="nb">{</span>10.23919/ECC.2018.8550136<span class="nb">}</span>,
+  url       = <span class="nb">{</span>https://doi.org/10.23919/ECC.2018.8550136<span class="nb">}</span>,
 <span class="nb">}</span>
 </pre></div>
 </div>
@@ -245,11 +274,19 @@ content="https://osqp.org/docs/_static/img/logo.png">
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bartolomeo Stellato, Goran Banjac
+        
+        &copy; Copyright 2020, Bartolomeo Stellato, Goran Banjac
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -260,7 +297,6 @@ content="https://osqp.org/docs/_static/img/logo.png">
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

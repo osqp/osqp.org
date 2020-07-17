@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,6 +11,11 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
+
+  
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
@@ -19,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -27,16 +33,11 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/osqp_theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lasso" href="lasso.html" />
@@ -101,6 +102,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -141,6 +143,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -179,7 +182,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">Examples</a> &raquo;</li>
         
@@ -217,11 +220,13 @@ The fitting problem is written as</p>
     u^2         &amp; |u| \le 1 \\
     (2|u| - 1)  &amp; |u| &gt; 1
 \end{cases}\end{split}\]</div>
-<p>The problem has the following equivalent form (see <a class="reference external" href="http://doi.org/10.1109/34.877518">here</a> for more details)</p>
+<p>The problem has the following equivalent form (see <a class="reference external" href="https://doi.org/10.1109/34.877518">here</a> for more details)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{ll}
-  \mbox{minimize}   &amp; u^T u + 2\,\boldsymbol{1}^T v \\
-  \mbox{subject to} &amp; -v \le Ax - b - u \le v
+  \mbox{minimize}   &amp; u^T u + 2\,\boldsymbol{1}^T (r+s) \\
+  \mbox{subject to} &amp; Ax - b - u = r - s \\
+                    &amp; r \ge 0 \\
+                    &amp; s \ge 0
 \end{array}\end{split}\]</div>
 <div class="section" id="python">
 <h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
@@ -243,14 +248,14 @@ The fitting problem is written as</p>
 <span class="c1"># OSQP data</span>
 <span class="n">Im</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="n">P</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">block_diag</span><span class="p">([</span><span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="mi">2</span><span class="o">*</span><span class="n">Im</span><span class="p">,</span>
-                       <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">))],</span>
+                       <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))],</span>
                        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span>
-        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">]),</span>
-        <span class="n">sparse</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">])],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span>
-<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">)])</span>
-<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">b</span><span class="p">])</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">Ad</span><span class="p">,</span>   <span class="o">-</span><span class="n">Im</span><span class="p">,</span>   <span class="o">-</span><span class="n">Im</span><span class="p">,</span>   <span class="n">Im</span><span class="p">],</span>
+                 <span class="p">[</span><span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="n">Im</span><span class="p">,</span>   <span class="kc">None</span><span class="p">],</span>
+                 <span class="p">[</span><span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span> <span class="n">Im</span><span class="p">]],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)])</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)])</span>
 
 <span class="c1"># Create an OSQP object</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">osqp</span><span class="o">.</span><span class="n">OSQP</span><span class="p">()</span>
@@ -276,12 +281,15 @@ The fitting problem is written as</p>
 
 <span class="c">% OSQP data</span>
 <span class="n">Im</span> <span class="p">=</span> <span class="n">speye</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="n">P</span> <span class="p">=</span> <span class="nb">blkdiag</span><span class="p">(</span><span class="n">sparse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">Im</span><span class="p">,</span> <span class="n">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">));</span>
-<span class="n">q</span> <span class="p">=</span> <span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="mi">2</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
-<span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">;</span>
-     <span class="n">Ad</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">];</span>
-<span class="n">l</span> <span class="p">=</span> <span class="p">[</span><span class="n">b</span><span class="p">;</span> <span class="o">-</span><span class="nb">inf</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
-<span class="n">u</span> <span class="p">=</span> <span class="p">[</span><span class="nb">inf</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">b</span><span class="p">];</span>
+<span class="n">Om</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">);</span>
+<span class="n">Omn</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="n">P</span> <span class="p">=</span> <span class="nb">blkdiag</span><span class="p">(</span><span class="n">sparse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">Im</span><span class="p">,</span> <span class="n">sparse</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">));</span>
+<span class="n">q</span> <span class="p">=</span> <span class="p">[</span><span class="nb">zeros</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="mi">2</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="n">Ad</span><span class="p">,</span>  <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="o">-</span><span class="n">Im</span><span class="p">,</span> <span class="n">Im</span><span class="p">;</span>
+     <span class="n">Omn</span><span class="p">,</span>  <span class="n">Om</span><span class="p">,</span>  <span class="n">Im</span><span class="p">,</span> <span class="n">Om</span><span class="p">;</span>
+     <span class="n">Omn</span><span class="p">,</span>  <span class="n">Om</span><span class="p">,</span>  <span class="n">Om</span><span class="p">,</span> <span class="n">Im</span><span class="p">];</span>
+<span class="n">l</span> <span class="p">=</span> <span class="p">[</span><span class="n">b</span><span class="p">;</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="n">u</span> <span class="p">=</span> <span class="p">[</span><span class="n">b</span><span class="p">;</span> <span class="nb">inf</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
 
 <span class="c">% Create an OSQP object</span>
 <span class="n">prob</span> <span class="p">=</span> <span class="n">osqp</span><span class="p">;</span>
@@ -363,11 +371,19 @@ The fitting problem is written as</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bartolomeo Stellato, Goran Banjac
+        
+        &copy; Copyright 2020, Bartolomeo Stellato, Goran Banjac
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -378,7 +394,6 @@ The fitting problem is written as</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
