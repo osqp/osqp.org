@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>C/C++ &mdash; OSQP 0.6.0 documentation</title>
+  <title>C &mdash; OSQP 0.6.0 documentation</title>
   
 
   
@@ -119,7 +119,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="linear_systems_solvers.html">Linear Systems Solvers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values and errors</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#official">Official</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">C/C++</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">C</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#main-solver-api">Main solver API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sublevel-api">Sublevel API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#data-types">Data types</a></li>
@@ -187,7 +187,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
         
           <li><a href="index.html">Interfaces</a> &raquo;</li>
         
-      <li>C/C++</li>
+      <li>C</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -206,11 +206,11 @@ content="https://osqp.org/docs/_static/img/logo.png">
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="c-c">
-<span id="c-cpp-interface"></span><h1>C/C++<a class="headerlink" href="#c-c" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="c">
+<span id="c-interface"></span><h1>C<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="main-solver-api">
 <span id="c-main-api"></span><h2>Main solver API<a class="headerlink" href="#main-solver-api" title="Permalink to this headline">¶</a></h2>
-<p>The main C/C++ API is imported from the header <code class="code docutils literal notranslate"><span class="pre">osqp.h</span></code> and provides the following functions</p>
+<p>The main C API is imported from the header <code class="code docutils literal notranslate"><span class="pre">osqp.h</span></code> and provides the following functions</p>
 <dl class="cpp function">
 <dt id="_CPPv410osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings">
 <span id="_CPPv310osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings"></span><span id="_CPPv210osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings"></span><span id="osqp_setup__OSQPWorkspacePP.OSQPDataCP.OSQPSettingsCP"></span><span class="target" id="df/d16/osqp_8h_1ab72a28dc87cf8c55a576c1a2fba6df24"></span>c_int <code class="sig-name descname">osqp_setup</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413OSQPWorkspace" title="OSQPWorkspace">OSQPWorkspace</a> **<em>workp</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv48OSQPData" title="OSQPData">OSQPData</a> *<em>data</em>, <em class="property">const</em> <a class="reference internal" href="#_CPPv412OSQPSettings" title="OSQPSettings">OSQPSettings</a> *<em>settings</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410osqp_setupPP13OSQPWorkspacePK8OSQPDataPK12OSQPSettings" title="Permalink to this definition">¶</a><br /></dt>
@@ -278,7 +278,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </div>
 <div class="section" id="sublevel-api">
 <span id="c-sublevel-api"></span><h2>Sublevel API<a class="headerlink" href="#sublevel-api" title="Permalink to this headline">¶</a></h2>
-<p>Sublevel C/C++ API is also imported from the header <code class="code docutils literal notranslate"><span class="pre">osqp.h</span></code> and provides the following functions</p>
+<p>Sublevel C API is also imported from the header <code class="code docutils literal notranslate"><span class="pre">osqp.h</span></code> and provides the following functions</p>
 <div class="section" id="warm-start">
 <h3>Warm start<a class="headerlink" href="#warm-start" title="Permalink to this headline">¶</a></h3>
 <p>OSQP automatically warm starts primal and dual variables from the previous QP solution. If you would like to warm start their values manually, you can use</p>

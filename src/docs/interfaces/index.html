@@ -119,7 +119,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <li class="toctree-l2"><a class="reference internal" href="linear_systems_solvers.html">Linear Systems Solvers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="status_values.html">Status values and errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#official">Official</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="CC++.html">C/C++</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CC++.html">C</a></li>
 <li class="toctree-l3"><a class="reference internal" href="python.html">Python</a></li>
 <li class="toctree-l3"><a class="reference internal" href="matlab.html">Matlab</a></li>
 <li class="toctree-l3"><a class="reference internal" href="julia.html">Julia</a></li>
@@ -127,7 +127,8 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#community-maintained">Community Maintained</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="eigen.html">Eigen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eigen_google.html">Eigen interface by Google</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eigen_robotology.html">Eigen interface by Robotology</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rust.html">Rust</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ruby.html">Ruby</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fortran.html">Fortran</a></li>
@@ -231,7 +232,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="CC++.html#c-cpp-interface"><span class="std std-ref">C/C++</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="CC++.html#c-interface"><span class="std std-ref">C</span></a></p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference external" href="mailto:bartolomeo&#46;stellato&#37;&#52;&#48;gmail&#46;com">Bartolomeo Stellato</a></div>
 <div class="line"><a class="reference external" href="mailto:gbanjac&#37;&#52;&#48;control&#46;ee&#46;ethz&#46;ch">Goran Banjac</a></div>
@@ -283,9 +284,9 @@ content="https://osqp.org/docs/_static/img/logo.png">
 <h2>Community Maintained<a class="headerlink" href="#community-maintained" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 23%" />
+<col style="width: 24%" />
 <col style="width: 30%" />
-<col style="width: 47%" />
+<col style="width: 46%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Language</p></th>
@@ -294,28 +295,35 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="eigen.html#eigen-interface"><span class="std std-ref">Eigen</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="eigen_google.html#eigen-google"><span class="std std-ref">C++/Eigen Google</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="mailto:miles&#46;lubin&#37;&#52;&#48;gmail&#46;com">Miles Lubin</a></div>
+</div>
+</td>
+<td><p><a class="reference external" href="https://github.com/google/osqp-cpp">github.com/google/osqp-cpp</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="eigen_robotology.html#eigen-robotology"><span class="std std-ref">C++/Eigen Robotology</span></a></p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference external" href="mailto:giulio&#46;romualdi&#37;&#52;&#48;gmail&#46;com">Giulio Romualdi</a></div>
 </div>
 </td>
 <td><p><a class="reference external" href="https://github.com/robotology/osqp-eigen">github.com/robotology/osqp-eigen</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="rust.html#rust-interface"><span class="std std-ref">Rust</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="rust.html#rust-interface"><span class="std std-ref">Rust</span></a></p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference external" href="mailto:eabarnard&#37;&#52;&#48;gmail&#46;com">Ed Barnard</a></div>
 </div>
 </td>
 <td><p><a class="reference external" href="https://github.com/oxfordcontrol/osqp.rs">github.com/oxfordcontrol/osqp.rs</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ruby.html#ruby-interface"><span class="std std-ref">Ruby</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="ruby.html#ruby-interface"><span class="std std-ref">Ruby</span></a></p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference external" href="mailto:andrew&#37;&#52;&#48;chartkick&#46;com">Andrew Kane</a></div>
 </div>
 </td>
 <td><p><a class="reference external" href="https://github.com/ankane/osqp">https://github.com/ankane/osqp</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fortran.html#fortran-interface"><span class="std std-ref">Fortran</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fortran.html#fortran-interface"><span class="std std-ref">Fortran</span></a></p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference external" href="mailto:nick&#46;gould&#37;&#52;&#48;stfc&#46;ac&#46;uk">Nick Gould</a></div>
 <div class="line"><a class="reference external" href="mailto:bartolomeo&#46;stellato&#37;&#52;&#48;gmail&#46;com">Bartolomeo Stellato</a></div>
@@ -324,7 +332,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
 </td>
 <td><p><a class="reference external" href="https://github.com/oxfordcontrol/osqp-fortran">github.com/oxfordcontrol/osqp-fortran</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="cutest.html#cutest-interface"><span class="std std-ref">Cutest</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="cutest.html#cutest-interface"><span class="std std-ref">Cutest</span></a></p></td>
 <td><div class="line-block">
 <div class="line"><a class="reference external" href="mailto:nick&#46;gould&#37;&#52;&#48;stfc&#46;ac&#46;uk">Nick Gould</a></div>
 </div>
