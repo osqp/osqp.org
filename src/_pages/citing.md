@@ -27,6 +27,9 @@ Main algorithm description, derivation and benchmark available in this [paper](h
   title   = {{OSQP}: an operator splitting solver for quadratic programs},
   journal = {Mathematical Programming Computation},
   year    = {2020},
+  volume  = {12},
+  number  = {4},
+  pages   = {637--672},
   doi     = {10.1007/s12532-020-00179-2},
   url     = {https://doi.org/10.1007/s12532-020-00179-2},
 }
@@ -52,6 +55,24 @@ Infeasibility detection proofs using ADMM (also for general conic programs) in t
 ```
 {% endraw %}
 
+#### GPU implementation
+GPU implementation and PCG method for solving linear systems in this [paper](https://doi.org/10.1016/j.jpdc.2020.05.021).
+
+{% raw %}
+```latex
+@article{osqp-gpu,
+  author  = {Schubiger, M. and Banjac, G. and Lygeros, J.},
+  title   = {{GPU} acceleration of {ADMM} for large-scale quadratic programming},
+  journal = {Journal of Parallel and Distributed Computing},
+  year    = {2020},
+  volume  = {144},
+  pages   = {55--67},
+  doi     = {10.1016/j.jpdc.2020.05.021},
+  url     = {https://doi.org/10.1016/j.jpdc.2020.05.021},
+}
+```
+{% endraw %}
+
 #### Code generation
 Code generation functionality and example in this [paper](https://stanford.edu/~boyd/papers/pdf/osqp_embedded.pdf).
 
@@ -68,3 +89,18 @@ Code generation functionality and example in this [paper](https://stanford.edu/~
 ```
 {% endraw %}
 
+#### Mixed-integer optimization
+A branch-and-bound solver for mixed-integer quadratic optimization in this [paper](https://stellato.io/assets/downloads/publications/2018/miosqp_ecc.pdf).
+
+{% raw %}
+```latex
+@inproceedings{miosqp,
+  author    = {Stellato, B. and Naik, V. V. and Bemporad, A. and Goulart, P. and Boyd, S.},
+  title     = {Embedded mixed-integer quadratic optimization using the {OSQP} solver},
+  booktitle = {European Control Conference (ECC)},
+  year      = {2018},
+  doi       = {10.23919/ECC.2018.8550136},
+  url       = {https://doi.org/10.23919/ECC.2018.8550136},
+}
+```
+{% endraw %}
