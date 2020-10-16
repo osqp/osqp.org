@@ -27,6 +27,9 @@ Main algorithm description, derivation and benchmark available in this [paper](h
   title   = {{OSQP}: an operator splitting solver for quadratic programs},
   journal = {Mathematical Programming Computation},
   year    = {2020},
+  volume  = {12},
+  number  = {4},
+  pages   = {637--672},
   doi     = {10.1007/s12532-020-00179-2},
   url     = {https://doi.org/10.1007/s12532-020-00179-2},
 }
@@ -53,7 +56,7 @@ Infeasibility detection proofs using ADMM (also for general conic programs) in t
 {% endraw %}
 
 #### GPU implementation
-GPU implementation and PCG method for solving linear systems in this [paper](https://arxiv.org/pdf/1912.04263.pdf).
+GPU implementation and PCG method for solving linear systems in this [paper](https://doi.org/10.1016/j.jpdc.2020.05.021).
 
 {% raw %}
 ```latex
