@@ -272,8 +272,8 @@ The resulting problem has the following equivalent form,</p>
 <span class="n">n</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="n">k</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="n">F</span> <span class="p">=</span> <span class="n">sprandn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">));</span>
-<span class="n">mu</span> <span class="p">=</span> <span class="nb">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">));</span>
+<span class="n">mu</span> <span class="p">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="nb">gamma</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 
 <span class="c">% OSQP data</span>
@@ -330,8 +330,8 @@ The resulting problem has the following equivalent form,</p>
 <span class="n">n</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="n">k</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="n">F</span> <span class="p">=</span> <span class="n">sprandn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="nb">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">));</span>
-<span class="n">mu</span> <span class="p">=</span> <span class="nb">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">sparse</span><span class="p">(</span><span class="nb">diag</span><span class="p">(</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">));</span>
+<span class="n">mu</span> <span class="p">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="nb">gamma</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="n">Sigma</span> <span class="p">=</span> <span class="n">F</span><span class="o">*</span><span class="n">F</span><span class="o">&#39;</span> <span class="o">+</span> <span class="n">D</span><span class="p">;</span>
 
