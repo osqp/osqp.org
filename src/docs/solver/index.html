@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>The solver &mdash; OSQP 0.6.0 documentation</title>
+  <title>The solver &mdash; OSQP 0.6.2 documentation</title>
   
 
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -85,7 +88,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
             
             
               <div class="version">
-                0.6.0
+                0.6.2
               </div>
             
           
@@ -175,6 +178,8 @@ content="https://osqp.org/docs/_static/img/logo.png">
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -186,7 +191,7 @@ content="https://osqp.org/docs/_static/img/logo.png">
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/solver/index.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -284,7 +289,7 @@ In particular if it is <code class="code docutils literal notranslate"><span cla
 <p>where <span class="math notranslate nohighlight">\(v_+=\max(v,0)\)</span> and <span class="math notranslate nohighlight">\(v_-=\min(v,0)\)</span>.</p>
 <p>The primal infeasibility check is then</p>
 <div class="math notranslate nohighlight">
-\[\left\|A^T v \right\|_{\infty} \le \epsilon_{\rm prim\_inf}, \quad u^T (v)_{+} + l^T (v)_{-} \le - \epsilon_{\rm prim\_inf}.\]</div>
+\[\left\|A^T v \right\|_{\infty} \le \epsilon_{\rm prim\_inf}, \quad u^T v_{+} + l^T v_{-} \le \epsilon_{\rm prim\_inf}.\]</div>
 </div>
 <div class="section" id="dual-infeasibility">
 <h3>Dual infeasibility<a class="headerlink" href="#dual-infeasibility" title="Permalink to this headline">¶</a></h3>
@@ -294,10 +299,10 @@ In particular if it is <code class="code docutils literal notranslate"><span cla
 <p>The dual infeasibility check is then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\| P s \|_{\infty} \le \epsilon_{\rm dual\_inf} , \quad
-q^T s \le -\epsilon_{\rm dual\_inf}, \\
+q^T s \le \epsilon_{\rm dual\_inf}, \\
 (A s)_i \begin{cases} \in \left[-\epsilon_{\rm dual\_inf}, \epsilon_{\rm dual\_inf}\right] &amp; u_i, l_i \in \mathbf{R}\\
-\ge \epsilon_{\rm dual\_inf} &amp;u_i = +\infty\\
-\le  -\epsilon_{\rm dual\_inf} &amp;l_i = -\infty.\end{cases}\end{split}\]</div>
+\ge -\epsilon_{\rm dual\_inf} &amp;u_i = +\infty\\
+\le  \epsilon_{\rm dual\_inf} &amp;l_i = -\infty.\end{cases}\end{split}\]</div>
 </div>
 <div class="section" id="polishing">
 <h3>Polishing<a class="headerlink" href="#polishing" title="Permalink to this headline">¶</a></h3>
@@ -320,37 +325,29 @@ However, low tolerances might require a very large number of iterations.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../get_started/index.html" class="btn btn-neutral float-right" title="Get started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../index.html" class="btn btn-neutral float-left" title="OSQP solver documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../get_started/index.html" class="btn btn-neutral float-right" title="Get started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="OSQP solver documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Bartolomeo Stellato, Goran Banjac
+        &#169; Copyright 2021, Bartolomeo Stellato, Goran Banjac.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
